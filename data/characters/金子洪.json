@@ -1,0 +1,329 @@
+{
+  "characters": {
+    "金子洪": {
+      "identity": {
+        "charName": "金子洪",
+        "playerName": "汉堡",
+        "race": "朝鲜族",
+        "gender": "男",
+        "age": 32,
+        "height": 175,
+        "weight": 70,
+        "eyeColor": "黑",
+        "skinColor": "黄",
+        "hairColor": "黑",
+        "geneLockLevel": "一阶",
+        "geneLockEnabled": true,
+        "geneLockProf": 10,
+        "geneLockProfs": {
+          "一阶": 10,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 16,
+        "dex": 16,
+        "con": 16,
+        "int": 13,
+        "wis": 16,
+        "cha": 13
+      },
+      "derived": {
+        "level": 2,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 13,
+        "hpCurrent": 24,
+        "hpMax": 24,
+        "fatigueCurrent": 0,
+        "fatigueMax": 14,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 2,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": false,
+          "value": 0
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": true,
+          "value": 1
+        },
+        "athClimb": {
+          "checked": true,
+          "value": 1
+        },
+        "athSwim": {
+          "checked": true,
+          "value": 1
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": true,
+          "value": 1
+        },
+        "dexRide": {
+          "checked": true,
+          "value": 1
+        },
+        "dexStealth": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": true,
+          "value": 1
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": false,
+          "value": 0
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": true,
+          "value": 1
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "剑类"
+      ],
+      "background": {
+        "bgPersonality": "消防员。",
+        "bgEffects": {
+          "personality": "常规灭火相关检定自动成功",
+          "traits": "每日一次，在进行帮助他人的属性检定时具有优势。",
+          "ideals": "攻击邪恶阵营角色时额外+2命中",
+          "bonds": "你对于回到现实世界有着强烈的渴望",
+          "flaws": "字面意思"
+        },
+        "bgTraits": "做任何事都会优先从他人的角度出发",
+        "bgIdeals": "好人有好报",
+        "bgBonds": "一生都在为了让母亲和弟弟过上好日子而活",
+        "bgFlaws": "总是为其他人思考，往往会忽视自己。",
+        "bgMechanics": "常规灭火相关检定自动成功 | 每日一次，在进行帮助他人的属性检定时具有优势。 | 攻击邪恶阵营角色时额外+2命中 | 你对于回到现实世界有着强烈的渴望 | 字面意思"
+      },
+      "talents": [],
+      "enhances": [
+        "细胞活性强化·一阶",
+        "突破优势·一阶",
+        "视觉神经强化·一阶"
+      ],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "抗生素0.5立方",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "消炎药0.5立方",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "白银10万两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "自热小火锅",
+          "qty": 10,
+          "weight": 0.5
+        },
+        {
+          "name": "花12两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "420文",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "护身符",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [
+        {
+          "name": "冥想",
+          "castTime": "短休/长休",
+          "range": "自身",
+          "duration": "短休/长休",
+          "cost": 0,
+          "category": "专注"
+        }
+      ],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "人类",
+        "race": "朝鲜族",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

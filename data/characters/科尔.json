@@ -1,0 +1,287 @@
+{
+  "characters": {
+    "科尔": {
+      "identity": {
+        "charName": "科尔",
+        "playerName": "绿魔",
+        "race": "倪哥",
+        "gender": "男性",
+        "age": 24,
+        "height": 180,
+        "weight": 90,
+        "eyeColor": "棕色",
+        "skinColor": "棕黑色",
+        "hairColor": "黑色",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 12,
+        "dex": 10,
+        "con": 12,
+        "int": 8,
+        "wis": 8,
+        "cha": 8
+      },
+      "derived": {
+        "level": 1,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 9,
+        "hpCurrent": 12,
+        "hpMax": 12,
+        "fatigueCurrent": 0,
+        "fatigueMax": 8,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 1,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": true,
+          "value": 1
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": true,
+          "value": 1
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": false,
+          "value": 0
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "徒手格斗",
+        "匕首"
+      ],
+      "background": {
+        "bgPersonality": "帮派成员",
+        "bgEffects": {
+          "personality": "黑社会"
+        },
+        "bgTraits": "我在说话时总是带点自创或底层社区的俚语",
+        "bgIdeals": "我见过太多兄弟不是横死就是烂在监狱里，我绝不能、也绝不会是下一个",
+        "bgBonds": "我的一名挚友在帮派冲突中意外死去，我承诺要照顾他留下的家人",
+        "bgFlaws": "遇到难题时，我总是选择使用“街头方式”（威胁、盗窃、暴力）来解决，即使有更好的选择",
+        "bgMechanics": "黑社会"
+      },
+      "talents": [],
+      "enhances": [],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "匕首",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "畸变兽",
+        "race": "畸变兽",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

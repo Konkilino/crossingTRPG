@@ -1,0 +1,327 @@
+{
+  "characters": {
+    "余水": {
+      "identity": {
+        "charName": "余水",
+        "playerName": "阿油",
+        "race": "汉族",
+        "gender": "男",
+        "age": 18,
+        "height": 180,
+        "weight": 75,
+        "eyeColor": "黑色",
+        "skinColor": "黄色",
+        "hairColor": "黄毛",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 12,
+        "dex": 12,
+        "con": 15,
+        "int": 10,
+        "wis": 12,
+        "cha": 12
+      },
+      "derived": {
+        "level": 1,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 12,
+        "hpCurrent": 20,
+        "hpMax": 20,
+        "fatigueCurrent": 0,
+        "fatigueMax": 10,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 1,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": true,
+          "value": 1
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": true,
+          "value": 1
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": true,
+          "value": 1
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": false,
+          "value": 0
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "格斗",
+        "1.匕首"
+      ],
+      "background": {
+        "bgPersonality": "黑社会",
+        "bgTraits": "喜欢全全到肉的肉搏",
+        "bgIdeals": "真男人就来一场电话亭对殴一决胜负吧！",
+        "bgBonds": "让父母过上更好的生活",
+        "bgFlaws": "不讲理智，只讲情谊",
+        "bgMechanics": ""
+      },
+      "talents": [
+        "健壮·一阶：生命值上限提升5点。"
+      ],
+      "enhances": [
+        "全方位强化·一阶",
+        "细胞活性强化·一阶",
+        "反应神经强化·一阶",
+        "骨骼强度强化·一阶",
+        "运动神经强化·一阶",
+        "视觉神经强化·一阶"
+      ],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "顶级雪茄",
+          "qty": 4,
+          "weight": 0.5
+        },
+        {
+          "name": "高档白酒",
+          "qty": 3,
+          "weight": 0.5
+        },
+        {
+          "name": "槟榔",
+          "qty": 20,
+          "weight": 0.5
+        },
+        {
+          "name": "压缩饼干",
+          "qty": 20,
+          "weight": 0.5
+        },
+        {
+          "name": "匕首一对",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "香烟5条",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [
+        {
+          "name": "健壮·一阶",
+          "castTime": "生命值上限提升5点。",
+          "range": "",
+          "duration": "",
+          "cost": 0,
+          "category": ""
+        }
+      ],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "人类",
+        "race": "汉族",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

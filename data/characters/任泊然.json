@@ -1,0 +1,296 @@
+{
+  "characters": {
+    "任泊然": {
+      "identity": {
+        "charName": "任泊然",
+        "playerName": "果仔",
+        "race": "汉族",
+        "gender": "男",
+        "age": 16,
+        "height": 173,
+        "weight": 62,
+        "eyeColor": "黑色",
+        "skinColor": "黄色",
+        "hairColor": "黑发",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 8,
+        "dex": 8,
+        "con": 10,
+        "int": 12,
+        "wis": 8,
+        "cha": 8
+      },
+      "derived": {
+        "level": 1,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 9,
+        "hpCurrent": 10,
+        "hpMax": 10,
+        "fatigueCurrent": 0,
+        "fatigueMax": 12,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 1,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": true,
+          "value": 1
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": false,
+          "value": 0
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": true,
+          "value": 1
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "通用语"
+      ],
+      "background": {
+        "bgPersonality": "学生",
+        "bgEffects": {
+          "personality": "成功通关任务世界后，如果有队友明显比自己表现更好，则会获得额外经验值。"
+        },
+        "bgTraits": "思维敏捷但古板",
+        "bgIdeals": "知识是人类进步的源泉",
+        "bgBonds": "现实世界幸福美满的家园",
+        "bgFlaws": "缺乏社会经验 学生思维",
+        "bgMechanics": "成功通关任务世界后，如果有队友明显比自己表现更好，则会获得额外经验值。"
+      },
+      "talents": [],
+      "enhances": [],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "例：名称",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "书包",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "本子",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "人类",
+        "race": "汉族",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

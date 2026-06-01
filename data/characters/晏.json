@@ -1,0 +1,291 @@
+{
+  "characters": {
+    "晏": {
+      "identity": {
+        "charName": "晏",
+        "playerName": "阿福",
+        "race": "汉族",
+        "gender": "男",
+        "age": 30,
+        "height": 178,
+        "weight": 70,
+        "eyeColor": "黑色",
+        "skinColor": "黄色",
+        "hairColor": "黑色",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 8,
+        "dex": 8,
+        "con": 10,
+        "int": 12,
+        "wis": 12,
+        "cha": 8
+      },
+      "derived": {
+        "level": 1,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 11,
+        "hpCurrent": 10,
+        "hpMax": 10,
+        "fatigueCurrent": 0,
+        "fatigueMax": 12,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 1,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": false,
+          "value": 0
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": true,
+          "value": 1
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": false,
+          "value": 0
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "通用语"
+      ],
+      "background": {
+        "bgPersonality": "医生",
+        "bgEffects": {
+          "personality": "可以通过医疗检定消耗对应物资治疗常规伤势"
+        },
+        "bgTraits": "喜欢从他人角度看待问题，经常会想如果是对方会怎么做怎么想",
+        "bgIdeals": "身边的氛围和气势是最重要的",
+        "bgBonds": "自己的身边的亲人和朋友，我希望他们健康快乐",
+        "bgFlaws": "什么时候轮到你自己啊，阿福",
+        "bgMechanics": "可以通过医疗检定消耗对应物资治疗常规伤势"
+      },
+      "talents": [],
+      "enhances": [],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "医疗包",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "手术刀",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "人类",
+        "race": "汉族",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "characters": {
+    "顾清": {
+      "identity": {
+        "charName": "顾清",
+        "playerName": "小郑",
+        "race": "畸变兽·史莱姆",
+        "gender": "女",
+        "age": 25,
+        "height": 170,
+        "weight": 50,
+        "eyeColor": "黑色",
+        "skinColor": "白皙",
+        "hairColor": "红色",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "斥候",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 14,
+        "dex": 16,
+        "con": 14,
+        "int": 16,
+        "wis": 16,
+        "cha": 13
+      },
+      "derived": {
+        "level": 2,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 13,
+        "hpCurrent": 43,
+        "hpMax": 43,
+        "fatigueCurrent": 0,
+        "fatigueMax": 16,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 2,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": false,
+          "value": 0
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": true,
+          "value": 1
+        },
+        "athClimb": {
+          "checked": true,
+          "value": 1
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": true,
+          "value": 3
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": true,
+          "value": 1
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": true,
+          "value": 1
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": true,
+          "value": 1
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "枪械"
+      ],
+      "background": {
+        "bgPersonality": "侦探",
+        "bgEffects": {
+          "personality": "进行调查检定时只要不是大失败，你可以将检定结果视为15。",
+          "traits": "当你做出和所有其他队友都不同的行为或者决策时，相关检定结果额外+2。",
+          "ideals": "当前团队陷入迷茫时，你可以进行一次15难度的逻辑学检定，成功后有可能获得一条有帮助的提示。",
+          "bonds": "每日限一次。你在追查凶手相关的调查和逻辑检定中具有优势。",
+          "flaws": "你在人数众多的场景下会偶尔出现成功的检定变为失败的情况。"
+        },
+        "bgTraits": "烈焰藏锋、以奇制正",
+        "bgIdeals": "真相如太极—隐于表象之下的阴阳相推。\n我要做的，不是安静观察，而是主动搅动潭水，让沉底的东西自己翻上来",
+        "bgBonds": "父母死一场凶杀案中，迟迟未找到真凶",
+        "bgFlaws": "过分相信个人能力，不擅团队协作",
+        "bgMechanics": "进行调查检定时只要不是大失败，你可以将检定结果视为15。 | 当你做出和所有其他队友都不同的行为或者决策时，相关检定结果额外+2。 | 当前团队陷入迷茫时，你可以进行一次15难度的逻辑学检定，成功后有可能获得一条有帮助的提示。 | 每日限一次。你在追查凶手相关的调查和逻辑检定中具有优势。 | 你在人数众多的场景下会偶尔出现成功的检定变为失败的情况。"
+      },
+      "talents": [
+        "情报渠道·一阶：你可以针对一个区域花费时间和经验来获取一条对应情报。",
+        "灵巧身手·一阶：获得1点灵巧的专业熟练项。每日一次灵巧类检定重骰。",
+        "斥候本能·一阶：敏捷+3，感知+3。敏捷豁免+3。生命值+9。"
+      ],
+      "enhances": [
+        "全方位强化·一阶",
+        "突破优势·一阶",
+        "修复缺陷·一阶",
+        "视觉神经强化·一阶",
+        "细胞活性化·一阶"
+      ],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "生命药水",
+          "qty": 2,
+          "weight": 0.5
+        },
+        {
+          "name": "冰霜抗性药剂",
+          "qty": 2,
+          "weight": 0.5
+        },
+        {
+          "name": "单兵口粮",
+          "qty": 10,
+          "weight": 0.5
+        },
+        {
+          "name": "白银20万两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "望远镜",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "花18两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "100文",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "花60文",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "真知眼镜·一阶",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "望远镜，放大镜",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "木质长矛",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "手套",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "恒温衣，恒温鞋，黑科技雨衣",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "长款羽绒服",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "纯净水",
+          "qty": 12,
+          "weight": 0.5
+        },
+        {
+          "name": "生命药水",
+          "qty": 2,
+          "weight": 0.5
+        },
+        {
+          "name": "冰霜抗性药剂",
+          "qty": 2,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [
+        {
+          "name": "潜行·一阶",
+          "castTime": "1分钟",
+          "range": "自身",
+          "duration": "1小时",
+          "cost": 1,
+          "category": "专注"
+        },
+        {
+          "name": "破隐一击·一阶",
+          "castTime": "1动作",
+          "range": "*",
+          "duration": "立即",
+          "cost": 3,
+          "category": "战技"
+        }
+      ],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "畸变兽",
+        "race": "畸变兽",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

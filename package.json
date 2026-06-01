@@ -1,0 +1,42 @@
+{
+  "name": "crossing-trpg-terminal",
+  "version": "1.0.0",
+  "description": "穿越团 · 主神空间终端",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "server": "node server.js",
+    "open": "start index.html",
+    "buildBundle": "node scripts/buildDataBundle.js",
+    "pack": "electron-packager . CrossingTRPG --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"backup|node_modules|.claude|.md$|test_shop|diag\" --electron-version=33.4.11",
+    "dist": "npm run pack && electron-builder --win portable --prepackaged \"dist/CrossingTRPG-win32-x64\""
+  },
+  "build": {
+    "appId": "com.crossing.trpg-terminal",
+    "productName": "CrossingTRPG",
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "index.html",
+      "main.js",
+      "scripts/**/*",
+      "styles/**/*",
+      "data/**/*",
+      "!data/api/**",
+      "!backup/**",
+      "!*.md",
+      "!test_shop.html",
+      "!diag.html",
+      "!.claude/**"
+    ],
+    "win": {
+      "target": "portable"
+    }
+  },
+  "devDependencies": {
+    "@electron/packager": "^20.0.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.0.0"
+  }
+}

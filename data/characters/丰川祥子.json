@@ -1,0 +1,327 @@
+{
+  "characters": {
+    "丰川祥子": {
+      "identity": {
+        "charName": "丰川祥子",
+        "playerName": "Doyle",
+        "race": "人类",
+        "gender": "女",
+        "age": 16,
+        "height": 158,
+        "weight": 45,
+        "eyeColor": "金色",
+        "skinColor": "嫩白色",
+        "hairColor": "海蓝色",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 12,
+        "dex": 12,
+        "con": 12,
+        "int": 12,
+        "wis": 9,
+        "cha": 14
+      },
+      "derived": {
+        "level": 1,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 10,
+        "hpCurrent": 12,
+        "hpMax": 12,
+        "fatigueCurrent": 0,
+        "fatigueMax": 12,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 1,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": false,
+          "value": 0
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": false,
+          "value": 0
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": true,
+          "value": 1
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "枪械"
+      ],
+      "background": {
+        "bgPersonality": "丰川集团的长女，为了照顾职场失意被逐出家门变成醉鬼的父亲，抛弃了万贯家财，选择和父亲一起一穷二白的开始新生活打工赚钱养家，但只可惜连她最希望亲近的父亲也因为自卑不想让她接近",
+        "bgTraits": "为了证明自己在失去大小姐的光环后仍然能闯出一片天，丰川祥子无论做任何事都非常努力",
+        "bgIdeals": "我不会成为任何人所期望的样子，我就是我自己，我只作为丰川祥子而存在",
+        "bgBonds": "好想...好想再见到一次年幼时逝去的母亲",
+        "bgFlaws": "丰川祥子的性格十分要强，过分期望证明自己这点很多时候反而成为自己的阻碍",
+        "bgEffects": {
+          "flaws": "会在不合时宜的时候逞强/争胜"
+        },
+        "bgMechanics": "会在不合时宜的时候逞强/争胜"
+      },
+      "talents": [],
+      "enhances": [],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "手风琴",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "冰冻射线充能块",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "单兵口粮",
+          "qty": 20,
+          "weight": 0.5
+        },
+        {
+          "name": "白银10万两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "100文",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "花20文",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "花10两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "护身符",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "冷冻射线枪10",
+          "qty": 10,
+          "weight": 0.5
+        },
+        {
+          "name": "充能块",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "人类",
+        "race": "人类",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

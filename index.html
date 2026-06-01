@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>穿越团 · 主神空间终端</title>
+<link rel="stylesheet" href="styles/theme.css">
+<style>
+/* Main Page */
+#mainPage{background:#111122;justify-content:center;align-items:center;text-align:center}
+.main-title{font-size:52px;font-weight:900;color:#26c6da;text-shadow:0 0 40px rgba(38,198,218,.3);line-height:1.2;margin-bottom:8px}
+.main-sub{font-family:var(--font-mono);font-size:13px;color:#4dd0e1;margin-bottom:60px;letter-spacing:4px}
+.main-buttons{display:flex;gap:40px;justify-content:center}
+.main-btn{width:260px;height:170px;border-radius:16px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-family:var(--font);transition:all .2s;border:1px solid}
+.main-btn .icon{font-size:36px}
+.main-btn .label{font-size:20px;font-weight:700;color:#fff}
+.main-btn .hint{font-family:var(--font-mono);font-size:10px}
+.main-btn.char{background:linear-gradient(135deg,rgba(126,87,194,.2),rgba(179,157,219,.15));border-color:rgba(126,87,194,.4)}
+.main-btn.char:hover{background:linear-gradient(135deg,rgba(126,87,194,.4),rgba(179,157,219,.3));border-color:#7e57c2}
+.main-btn.shop{background:linear-gradient(135deg,rgba(255,138,60,.2),rgba(255,171,145,.15));border-color:rgba(255,138,60,.4)}
+.main-btn.shop:hover{background:linear-gradient(135deg,rgba(255,138,60,.4),rgba(255,171,145,.3));border-color:#ff8a3c}
+.main-btn.jianxia{background:linear-gradient(135deg,rgba(255,107,107,.2),rgba(255,169,77,.15));border-color:rgba(255,107,107,.4)}
+.main-btn.jianxia:hover{background:linear-gradient(135deg,rgba(255,107,107,.4),rgba(255,169,77,.3));border-color:#ff6b6b}
+.main-version{position:fixed;bottom:24px;color:#3a3a5a;font-size:11px;font-family:var(--font-mono)}
+.main-grid{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(38,198,218,.03)1px,transparent 1px),linear-gradient(90deg,rgba(38,198,218,.03)1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0}
+.main-content{position:relative;z-index:1}
+#characterPage{background:var(--bg-primary)}
+.char-content{padding:16px 20px;overflow-y:auto;flex:1;max-width:1400px;margin:0 auto;width:100%}
+.identity-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+@media(max-width:800px){.identity-grid{grid-template-columns:repeat(2,1fr)}}
+.id-field{display:flex;flex-direction:column;gap:3px}
+.id-field label{font-size:10px;color:#a0a0d0;text-transform:uppercase}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:10px;text-align:center}
+.stat-card .stat-label{font-size:11px;color:#a0a0d0;font-weight:600;letter-spacing:.05em}
+.stat-card .stat-mod{font-size:20px;font-family:var(--font-mono);color:var(--accent-gold);font-weight:700;margin-top:2px}
+.derived-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}
+.derived-item{display:flex;flex-direction:column;gap:2px}
+.derived-item label{font-size:9px;color:#a0a0d0;text-transform:uppercase}
+
+/* Hearts / Leaves / Jars */
+.status-icons{display:flex;flex-wrap:wrap;gap:6px;padding:8px 12px;background:var(--bg-secondary);border-radius:var(--radius-sm);margin-bottom:6px}
+.status-icons .si-label{font-size:12px;font-weight:600;min-width:80px;align-self:center}
+.status-icons .si-icons{display:flex;flex-wrap:wrap;gap:2px;align-items:center;flex:1}
+.status-icons .si-value{font-size:14px;font-weight:700;font-family:var(--font-mono);min-width:80px;text-align:right;align-self:center}
+.heart-ico{display:inline-block;width:20px;height:20px;position:relative}
+.heart-ico svg{width:20px;height:20px;display:block}
+.leaf-ico{display:inline-block;width:18px;height:18px;position:relative}
+.leaf-ico svg{width:18px;height:18px;display:block}
+.jar-ico{display:inline-block;width:22px;height:26px;position:relative}
+.jar-ico svg{width:22px;height:26px;display:block}
+.si-hp .si-value{color:#ef5350}
+.si-fatigue .si-value{color:#66bb6a}
+.si-xp .si-value{color:#6a8ac4}
+
+/* Skills - improved */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:800px){.skills-grid{grid-template-columns:1fr}}
+.skill-cat{margin-bottom:8px}
+.skill-cat .cat-title{font-size:11px;font-weight:700;margin-bottom:4px;padding:4px 8px;border-radius:3px;background:rgba(255,255,255,.03)}
+.skill-row{display:flex;align-items:center;gap:4px;padding:3px 6px;font-size:12px;border-radius:3px;transition:background .1s}
+.skill-row:hover{background:rgba(255,255,255,.04)}
+.skill-row .sk-name{flex:1;color:var(--text-secondary)}
+.skill-row input[type="number"]{width:38px;text-align:center;font-size:11px;padding:1px}
+.skill-row .sk-stat{font-size:9px;color:var(--text-muted);width:26px;text-align:right}
+.skill-row .sk-custom{flex:1;background:transparent;border:none;border-bottom:1px dashed var(--border);color:var(--text-primary);font-size:12px;padding:0 4px}
+.skill-row .sk-custom:focus{border-bottom-color:var(--accent-purple)}
+.dm-mode .skill-row .sk-name{display:none}
+.dm-mode .skill-row .sk-name-dm{display:inline}
+.skill-row .sk-name-dm{display:none;flex:1;background:transparent;border:none;border-bottom:1px dashed var(--accent-purple);color:#b39ddb;font-size:12px;font-weight:600;padding:0 4px}
+.other-profs{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.other-prof{background:var(--bg-secondary);border:1px solid var(--border);border-radius:3px;padding:2px 10px;font-size:12px}
+.add-prof-btn{font-size:11px;color:var(--text-muted);cursor:pointer;border:1px dashed var(--border);border-radius:3px;padding:2px 10px;background:transparent;display:inline-block;margin-top:4px}
+.add-prof-btn:hover{border-color:var(--border-hover);color:var(--text-secondary)}
+#skillFilter{width:100%;margin-bottom:8px;padding:6px 10px;background:var(--bg-primary);border:1px solid var(--border);border-radius:4px;color:var(--text-primary);font-size:12px}
+#skillFilter:focus{border-color:var(--accent-purple)}
+.dm-mode .dm-btns{display:inline-flex !important}
+
+/* Background */
+.bg-grid{display:grid;grid-template-columns:1fr;gap:6px}
+.bg-row{display:flex;gap:8px;align-items:flex-start}
+.bg-row .bg-label{font-size:10px;color:#a0a0d0;text-transform:uppercase;min-width:72px;padding-top:6px;font-weight:600}
+.bg-row textarea{flex:1;min-height:42px;font-size:12px;line-height:1.5}
+.bg-row .bg-effect{flex:1;min-height:42px;font-size:11px;line-height:1.5;color:var(--accent-gold);background:rgba(255,215,0,.04);border-color:rgba(255,215,0,.2)}
+.bg-row .bg-effect:focus{border-color:rgba(255,215,0,.5)}
+@media(max-width:800px){.bg-grid{grid-template-columns:1fr}}
+.bg-field{display:flex;flex-direction:column;gap:3px}
+.bg-field.full{grid-column:1/-1}
+.bg-field label{font-size:10px;color:#a0a0d0;text-transform:uppercase}
+.bg-field textarea{min-height:60px}
+
+/* Equipment */
+.equip-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:800px){.equip-grid{grid-template-columns:1fr}}
+.weapon-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.weapon-row label{font-size:10px;color:#a0a0d0;width:44px}
+.weapon-row input{flex:1}
+.load-row{display:flex;gap:10px}
+.load-item{flex:1;display:flex;flex-direction:column;gap:2px}
+.load-item label{font-size:9px;color:#a0a0d0;text-transform:uppercase}
+.currency-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media(max-width:800px){.currency-grid{grid-template-columns:repeat(2,1fr)}}
+.cur-slot{background:var(--bg-secondary);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center}
+.cur-slot .cur-name{font-size:10px;color:var(--accent-gold);font-weight:600}
+.cur-slot input{width:80%;text-align:center;font-size:13px;margin-top:4px}
+
+/* Slots */
+.slots-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:800px){.slots-grid{grid-template-columns:1fr}}
+.slot-card{background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius);padding:10px;margin-bottom:6px}
+.slot-card .slot-hdr{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.slot-card .slot-hdr input{flex:1;font-size:14px;font-weight:600;background:transparent;border:none;border-bottom:1px solid var(--border);padding:2px 0;border-radius:0}
+.slot-card .slot-hdr .slot-del{color:var(--accent-red);cursor:pointer;font-size:16px;opacity:.6}
+.slot-card .slot-hdr .slot-del:hover{opacity:1}
+.slot-details{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.slot-details .detail-field{display:flex;flex-direction:column;gap:1px}
+.slot-details .detail-field label{font-size:8px;color:var(--text-muted);text-transform:uppercase}
+.slot-details .detail-field input{font-size:11px;padding:2px 4px}
+.add-slot-btn{width:100%;padding:6px;border:1px dashed var(--border);background:transparent;color:var(--text-muted);border-radius:var(--radius-sm);cursor:pointer;font-size:12px}
+.add-slot-btn:hover{border-color:var(--border-hover);color:var(--text-secondary)}
+
+/* Shop */
+#shopPage{background:var(--bg-primary)}
+.shop-content{padding:20px;flex:1;overflow-y:auto;max-width:1200px;margin:0 auto;width:100%}
+.shop-header h1{font-size:28px;font-weight:900;color:var(--accent-orange);margin-bottom:4px}
+.shop-header p{color:var(--text-muted);font-size:12px;margin-bottom:12px}
+.shop-search{display:flex;gap:8px;margin-bottom:12px;align-items:center;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:8px 12px}
+.shop-search input{flex:1;background:var(--bg-primary)}
+.shop-search select{background:var(--bg-primary)}
+.shop-table{width:100%;border-collapse:collapse}
+.shop-table th{font-size:10px;text-transform:uppercase;color:#a0a0d0;padding:8px;border-bottom:1px solid var(--border);text-align:left;font-weight:700}
+.shop-table td{padding:6px 8px;border-bottom:1px solid #0d0d1a;font-size:13px;vertical-align:top}
+.shop-table tr:hover{background:rgba(255,255,255,.02)}
+.shop-table .type-tag{display:inline-block;padding:1px 8px;border-radius:3px;font-size:11px;font-weight:600}
+.shop-table .rank-tag{display:inline-block;padding:1px 6px;border-radius:3px;font-size:11px}
+.shop-count{font-size:11px;color:var(--text-muted);margin-bottom:8px}
+.keyword-tag{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;cursor:pointer;background:var(--bg-secondary);border:1px solid var(--border);color:var(--text-muted);transition:all .15s;user-select:none}
+.keyword-tag:hover{border-color:var(--accent-purple);color:#b39ddb}
+.keyword-tag.active{background:rgba(126,87,194,.2);border-color:var(--accent-purple);color:#b39ddb;font-weight:600}
+</style>
+</head>
+<body>
+<div>
+<div>
+<div>
+<div id="saveFeedback"></div>
+<div class="toolbar" id="mainToolbar" style="display:none">
+  <span class="app-title">⚡ 主神空间</span>
+  <button data-page="main">🏠 主页</button>
+  <button data-page="character" class="active">🧙 角色</button>
+  <button data-page="shop">🏪 商店</button>
+  <button id="dmPageBtn" data-page="dm" style="display:none">🎯 DM</button>
+  <span class="spacer"></span>
+  <select id="charSelector" onchange="onCharSelectorChange()" style="background:var(--bg-primary);border:1px solid var(--border);color:var(--text-primary);font-size:12px;padding:3px 8px;border-radius:4px;max-width:140px"></select>
+  <button onclick="deleteCurrentChar()" style="color:var(--accent-red);font-size:11px" title="删除当前角色">🗑</button>
+  <button onclick="saveCurrentChar()">💾 保存</button>
+  <button onclick="exportData()">📤 导出</button>
+  <button onclick="importData()">📥 导入</button>
+  <button id="dmToggle" onclick="toggleDM()">👁 DM</button>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="page active" id="mainPage">
+  <div class="main-grid"></div>
+  <div class="main-content">
+    <div class="main-title">欢迎来到<br>主神空间</div>
+    <div class="main-sub">— CROSSING · TRPG TERMINAL —</div>
+    <div class="main-buttons">
+      <div class="main-btn char" onclick="navigateTo(Object.keys(characters).length>0?'character':'creation')">
+        <div class="icon">🧙</div><div class="label">角色面板</div><div class="hint" style="color:#b39ddb">CHARACTER SHEET</div>
+      </div>
+      <div class="main-btn shop" onclick="navigateTo('shop')">
+        <div class="icon">🏪</div><div class="label">商店面板</div><div class="hint" style="color:#ffab91">SHOP INTERFACE</div>
+      </div>
+      <div class="main-btn jianxia" onclick="navigateTo('jianxia')" style="background:linear-gradient(135deg,rgba(255,107,107,.2),rgba(255,169,77,.15));border-color:rgba(255,107,107,.4)">
+        <div class="icon">🗡️</div><div class="label">剑侠情缘</div><div class="hint" style="color:#ffab91">JIANXIA WORLD</div>
+      </div>
+    </div>
+    <div class="main-version">v1.0 · electron</div>
+  </div>
+</div>
+
+<!-- CHARACTER CREATION PAGE -->
+<div class="page" id="creationPage" style="background:var(--bg-primary)">
+  <div class="shop-content" style="text-align:center;padding-top:60px">
+    <div style="font-size:64px;margin-bottom:16px">🧙</div>
+    <div style="font-size:24px;font-weight:900;color:var(--accent-cyan);margin-bottom:8px">欢迎来到主神空间</div>
+    <div style="font-size:13px;color:var(--text-secondary);margin-bottom:32px;max-width:440px;margin-left:auto;margin-right:auto;line-height:1.6">
+      你的冒险即将开始！创建一个角色来记录你的穿越者数据，<br>或请 DM 导入已有角色卡。
+    </div>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <button onclick="createNewCharacter()" style="background:linear-gradient(135deg,rgba(126,87,194,.3),rgba(179,157,219,.2));border:1px solid var(--accent-purple);color:#b39ddb;padding:12px 40px;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:all .2s">✨ 创建你的第一个角色</button>
+      <button onclick="importData()" style="background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);padding:12px 40px;border-radius:12px;font-size:16px;cursor:pointer;transition:all .2s">📥 导入已有数据</button>
+    </div>
+    <div style="margin-top:16px;font-size:11px;color:var(--text-muted)">创建后会自动填入默认值，可随时修改</div>
+  </div>
+</div>
+
+<!-- CHARACTER PAGE -->
+<div class="page" id="characterPage">
+  <div class="char-content" id="charContent">
+
+    <!-- Section 1: Identity -->
+    <div class="section mb-2">
+      <div class="section-title" style="color:#c9a84c">基础身份 <span class="badge">IDENTITY</span></div>
+      <div class="identity-grid" id="identityGrid"></div>
+    </div>
+    <!-- Section 1b: Possession -->
+    <div class="section mb-2" id="possessionSection">
+      <div class="section-title" style="color:#b39ddb">🧬 穿越者凭依 <span class="badge">POSSESSION</span></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" id="classGeneGrid">
+        <div class="id-field"><label>主职业</label><input type="text" id="idMainClass" placeholder="主职业名称" oninput="onCharFieldChange('mainClass')"></div>
+        <div class="id-field"><label>主职业等级</label><div class="stepper"><button onclick="stepIdNum('idMainClassLevel',-1,1,20)">−</button><input type="number" id="idMainClassLevel" value="1" min="1" max="20" oninput="onCharFieldChange('mainClassLevel')"><button onclick="stepIdNum('idMainClassLevel',1,1,20)">+</button></div></div>
+        <div class="id-field"><label>子职业</label><input type="text" id="idSubClass" placeholder="子职业名称" oninput="onCharFieldChange('subClass')"></div>
+        <div class="id-field"><label>子职业等级</label><div class="stepper"><button onclick="stepIdNum('idSubClassLevel',-1,1,20)">−</button><input type="number" id="idSubClassLevel" value="1" min="1" max="20" oninput="onCharFieldChange('subClassLevel')"><button onclick="stepIdNum('idSubClassLevel',1,1,20)">+</button></div></div>
+        <div class="id-field" id="geneLockField">
+          <label>基因锁等级</label>
+          <div style="display:flex;gap:4px;align-items:center">
+            <select id="idGeneLockLevel" onchange="onGeneLockLevelChange()" style="font-size:12px;flex:1"><option value="未开启">未开启</option><option value="一阶">一阶</option><option value="二阶">二阶</option><option value="三阶">三阶</option><option value="四阶">四阶</option></select>
+            <button id="geneLockToggle" onclick="toggleGeneLock()" style="width:28px;height:28px;background:var(--accent-green);border:none;border-radius:4px;color:#fff;font-size:14px;font-weight:700;cursor:pointer;padding:0;line-height:1" title="基因锁开关">✓</button>
+          </div>
+        </div>
+        <div class="id-field" id="geneLockProfField">
+          <label>基因锁熟练度</label>
+          <div class="stepper"><button onclick="stepIdNum('idGeneLockProf',-1,0,99)">−</button><input type="number" id="idGeneLockProf" value="0" min="0" max="99" oninput="onCharFieldChange('geneLockProf')"><button onclick="stepIdNum('idGeneLockProf',1,0,99)">+</button></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DM Dashboard -->
+    <div id="dmDashboard" class="section mb-2" style="display:none;border-color:#7e57c2">
+      <div class="section-title" style="color:#b39ddb">🎯 DM 全团概览 <span class="badge">DASHBOARD</span>
+        <span style="font-weight:400;font-size:10px;color:var(--text-muted);margin-left:8px">
+          <label><input type="checkbox" id="dmWarnOnly" onchange="renderDmDashboard()"> 仅显示异常</label>
+        </span>
+      </div>
+      <div id="dmDashBody" style="font-size:12px;color:var(--text-secondary)">加载角色数据中…</div>
+    </div>
+
+    <!-- Section 2: Core Stats + Status -->
+    <div class="grid-2 mb-2">
+      <div class="section">
+        <div class="section-title" style="color:#26c6da">核心属性 <span class="badge">ABILITY SCORES</span></div>
+        <div class="stats-grid" id="statsGrid"></div>
+        <div class="derived-grid" id="derivedGrid"></div>
+      </div>
+      <div class="section">
+        <div class="section-title" style="color:#ff8a3c">生存状态 <span class="badge">STATUS</span></div>
+        <div id="statusDisplay">
+          <!-- 血脉 · 种族 · 基础职业 · 一转 -->
+          <div class="status-refs-grid">
+            <div class="status-ref-item">
+              <label class="status-ref-label">🧬 血脉</label>
+              <select id="charBloodline" onchange="onCharFieldChange('bloodline')"></select>
+            </div>
+            <div class="status-ref-item">
+              <label class="status-ref-label">🌍 种族</label>
+              <select id="charRace" onchange="onCharFieldChange('race')"></select>
+            </div>
+          </div>
+          <div class="status-divider"></div>
+          <!-- 生命值 -->
+          <div class="status-icons si-hp">
+            <span class="si-label" style="min-width:80px">❤️ 生命值</span>
+            <span class="si-icons" id="hpIcons"></span>
+            <span class="si-value" id="hpText">
+              <input type="number" id="st_hpCur" value="10" min="0" oninput="onStatusChange('hp')">
+              <span class="si-sep">/</span>
+              <input type="number" id="st_hpMax" value="10" min="1" oninput="onStatusChange('hp')">
+              <span class="si-pct" id="hpPct"></span>
+            </span>
+          </div>
+          <!-- 疲劳值 -->
+          <div class="status-icons si-fatigue">
+            <div class="si-label" style="display:flex;align-items:center;gap:4px;min-width:80px">
+              <input id="fatigueLabel" list="fatiguePresets" value="🍃 疲劳值" oninput="onFatigueLabelChange()" onchange="onFatigueLabelChange()" style="width:120px;font-size:11px;font-weight:600;background:transparent;border:1px dashed var(--border);border-radius:3px;padding:2px 4px;color:var(--text-primary)" placeholder="资源名称" autocomplete="off">
+              <datalist id="fatiguePresets">
+                <option value="🍃 疲劳值">🍃 疲劳值</option>
+                <option value="🍃 查克拉">🍃 查克拉</option>
+                <option value="✨ 真气">✨ 真气</option>
+                <option value="🧠 灵能">🧠 灵能</option>
+                <option value="💀 死灵精华">💀 死灵精华</option>
+                <option value="⚡ 魔力">⚡ 魔力</option>
+                <option value="🔥 怒气">🔥 怒气</option>
+                <option value="💧 法力">💧 法力</option>
+              </datalist>
+            </div>
+            <span class="si-icons" id="fatigueIcons"></span>
+            <span class="si-value" id="fatigueText">
+              <input type="number" id="st_fatigueCur" value="0" min="0" oninput="onStatusChange('fatigue')">
+              <span class="si-sep">/</span>
+              <input type="number" id="st_fatigueMax" value="10" min="1" oninput="onStatusChange('fatigue')">
+              <span class="si-pct" id="fatiguePct"></span>
+            </span>
+          </div>
+          <div class="status-divider"></div>
+          <!-- 效果预览 -->
+          <div id="bloodlineEffect" class="status-effect" style="color:#ffa94d">请选择血脉查看效果</div>
+          <div id="raceEffect" class="status-effect" style="color:#74c0fc">请选择种族查看效果</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section 3: 背景与特质 -->
+    <div class="section mb-2 bg-traits-container">
+      <div class="section-title" style="color:#4dd0e1">📜 背景与特质 <span class="badge">BACKGROUND &amp; TRAITS</span></div>
+      <div class="bg-grid" id="bgGrid"></div>
+    </div>
+
+    <!-- Section 4: 道果 -->
+    <div class="section mb-2 bg-traits-container">
+      <div class="section-title" style="color:#c9a84c">✦ 道果 <span class="badge">DAO FRUIT</span></div>
+      <div class="grid-2 mb-2">
+        <div class="bg-field"><label>天赋</label><div class="tag-area" id="talentArea"><input class="tag-input" id="talentInput" placeholder="回车添加…" onkeydown="if(event.key==='Enter')addTalent()"></div></div>
+        <div class="bg-field"><label>已经历强化</label><div class="tag-area" id="enhanceArea"><input class="tag-input" id="enhanceInput" placeholder="回车添加…" onkeydown="if(event.key==='Enter')addEnhance()"></div></div>
+      </div>
+      <div class="bg-field full">
+        <label>特殊机制描述</label>
+        <textarea id="bgMechanics" oninput="onCharFieldChange('bgMechanics')" placeholder="特殊能力或背景机制的说明…"></textarea>
+      </div>
+    </div>
+
+    <!-- Section 4: Skill Slots -->
+    <div class="section mb-2">
+      <div class="section-title" style="color:#c9a84c">技能槽位 <span class="badge">SKILL SLOTS</span></div>
+      <div class="slots-grid">
+        <div>
+          <div style="font-size:12px;color:var(--accent-red);font-weight:700;margin-bottom:6px">⚡ 主动技能 <span style="font-weight:400;color:var(--text-muted);font-size:10px">最多4个</span></div>
+          <div id="activeSlots"></div>
+          <button class="add-slot-btn" onclick="addActiveSlot()">+ 添加主动技能</button>
+        </div>
+        <div>
+          <div style="font-size:12px;color:var(--accent-blue);font-weight:700;margin-bottom:6px">🔮 被动技能 <span style="font-weight:400;color:var(--text-muted);font-size:10px">最多2个</span></div>
+          <div id="passiveSlots"></div>
+          <button class="add-slot-btn" onclick="addPassiveSlot()">+ 添加被动技能</button>
+        </div>
+    </div>
+    <!-- Section 5: Property & Equipment -->
+    <div class="section mb-2">
+      <div class="section-title" style="color:#ffab91">财产 · 负重 <span class="badge">PROPERTY &amp; LOAD</span></div>
+      <div style="font-size:12px;color:var(--accent-cyan);font-weight:700;margin-bottom:6px">✦ 主神空间财产</div>
+      <div class="flex gap-4 mb-2" style="flex-wrap:wrap">
+        <div class="flex-col" style="min-width:160px"><label class="text-muted">经验值 <span class="dm-btns" style="display:none;gap:4px">
+          <button onclick="adjXp(-500)" style="background:var(--bg-card);border:1px solid var(--border);border-radius:3px;color:var(--accent-red);cursor:pointer;font-size:10px;padding:0 6px">-500</button>
+          <button onclick="adjXp(500)" style="background:var(--bg-card);border:1px solid var(--border);border-radius:3px;color:var(--accent-green);cursor:pointer;font-size:10px;padding:0 6px">+500</button>
+        </span></label>
+        <div style="display:flex;gap:4px;align-items:center">
+          <input type="number" id="mainXp" oninput="onCharFieldChange('mainXp')" value="0" style="flex:1;font-size:16px;font-weight:700;color:#6a8ac4">
+        </div></div>
+        <div class="flex-col" style="min-width:160px"><label class="text-muted">成就点 <span class="dm-btns" style="display:none;gap:4px">
+          <button onclick="adjAp(-10)" style="background:var(--bg-card);border:1px solid var(--border);border-radius:3px;color:var(--accent-red);cursor:pointer;font-size:10px;padding:0 6px">-10</button>
+          <button onclick="adjAp(10)" style="background:var(--bg-card);border:1px solid var(--border);border-radius:3px;color:var(--accent-green);cursor:pointer;font-size:10px;padding:0 6px">+10</button>
+        </span></label>
+        <div style="display:flex;gap:4px;align-items:center">
+          <input type="number" id="mainAp" oninput="onCharFieldChange('mainAp')" value="0" style="flex:1;font-size:16px;font-weight:700;color:#c9a84c">
+        </div></div>
+      </div>
+      <div style="font-size:11px;color:var(--accent-gold);font-weight:600;margin-bottom:4px">🏅 铭牌</div>
+      <div class="flex gap-2" id="badgeGrid" style="flex-wrap:wrap"></div>
+      <div class="flex gap-2 mt-1"><button class="btn-small" onclick="convertBadgeUp()">⬆ 合成升级</button><button class="btn-small" onclick="convertBadgeDown()">⬇ 拆分解锁</button></div>
+      <div style="border-top:1px solid var(--border);margin:12px 0"></div>
+      <div style="font-size:12px;color:var(--accent-orange);font-weight:700;margin-bottom:6px">🌍 任务世界货币 <span style="font-weight:400;font-size:10px;color:var(--text-muted)">当前世界：剑侠情缘 · 银两/铜币</span></div>
+      <div class="currency-grid" id="currencyGrid"></div>
+      <div style="border-top:1px solid var(--border);margin:12px 0"></div>
+      <div style="font-size:12px;color:var(--text-secondary);font-weight:600;margin-bottom:4px">🎒 负重 (承重熟练项 × STR)</div>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <div class="load-item"><label>当前负重</label><input type="number" id="loadCurrent" readonly style="background:var(--bg-secondary);color:var(--accent-orange);font-weight:700" value="0"></div>
+        <div class="load-item"><label>常规负重</label><input type="number" id="loadNormal" readonly style="background:var(--bg-secondary)" value="0"></div>
+        <div class="load-item"><label>满载负重</label><input type="number" id="loadMax" readonly style="background:var(--bg-secondary)" value="0"></div>
+        <div class="load-item"><label>极限负重</label><input type="number" id="loadLimit" readonly style="background:var(--bg-secondary)" value="0"></div>
+        <div style="flex:1;min-width:100px"><div class="progress-bar"><div class="fill load-bar" id="loadBar" style="width:0%;background:var(--accent-green)"></div></div><div class="text-muted mt-1" id="loadStatus">未负重</div></div>
+      </div>
+    </div>
+    <!-- Section 5b: Equipment -->
+    <div class="section mb-2">
+      <div class="section-title" style="color:#ffab91">⚔️ 装备 <span class="badge">EQUIPMENT</span></div>
+      <div class="weapon-row"><label>⚔️ 主手</label><input id="weaponMain" oninput="onCharFieldChange('weaponMain')" placeholder="武器名称"></div>
+      <div class="weapon-row"><label>🛡️ 副手</label><input id="weaponOff" oninput="onCharFieldChange('weaponOff')" placeholder="武器/盾牌"></div>
+      <div class="weapon-row"><label>⛓️ 防具</label><input id="armor" oninput="onCharFieldChange('armor')" placeholder="防具名称"></div>
+    </div>
+    <!-- Section 5c: Inventory -->
+    <div class="section mb-2">
+      <div class="section-title" style="color:#ffab91">🎒 物品清单 <span class="badge">INVENTORY</span></div>
+      <table><thead><tr><th style="width:50%">名称</th><th style="width:15%">数量</th><th style="width:15%">重量</th><th style="width:20px"></th></tr></thead><tbody id="invBody"></tbody></table>
+      <div class="mt-1"><button class="btn-small" onclick="addInvItem()">+ 添加物品</button></div>
+    </div>
+    <!-- Section 6: Skills (at bottom) -->
+    <div class="section mb-2">
+      <div class="section-title" style="color:#7e57c2">技能与熟练项 <span class="badge">SKILLS &amp; PROFICIENCIES</span></div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <input id="skillFilter" placeholder="🔍 搜索技能名称…" oninput="filterSkills()" style="flex:1;padding:6px 10px;background:var(--bg-primary);border:1px solid var(--border);border-radius:4px;color:var(--text-primary);font-size:12px">
+        <label style="font-size:11px;color:var(--text-muted);display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap">
+          <input type="checkbox" id="hideEmptyCats" onchange="filterSkills()" style="width:14px;height:14px"> 隐藏空类别
+        </label>
+      </div>
+      <div class="skills-grid">
+        <div id="skillLeft"></div>
+        <div id="skillRight"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- JIANXIA WORLD PAGE -->
+</div>
+</div>
+</div>
+<div class="page" id="jianxiaPage" style="background:var(--bg-primary)">
+  <div class="shop-content" style="overflow-x:auto">
+    <div class="shop-header"><h1 style="color:#ff6b6b">🗡️ 剑侠情缘 · 世界</h1><p>纯阳宫 · 武学查询</p></div>
+    <div class="shop-search">
+      <span style="font-size:16px">🔍</span>
+      <input id="jxSearch" placeholder="搜索名称、描述、关键词…" oninput="filterJianxia()" style="flex:1;background:var(--bg-primary)">
+      <select id="jxTypeFilter" onchange="filterJianxia()" style="background:var(--bg-primary)">
+        <option value="">全部类别</option>
+        <option value="技能">技能</option>
+        <option value="天材地宝">天材地宝</option>
+        <option value="神兵利器">神兵利器</option>
+      </select>
+      <select id="jxRankFilter" onchange="filterJianxia()" style="background:var(--bg-primary)">
+        <option value="">全部系别</option>
+        <option value="纯阳诀">纯阳诀</option>
+        <option value="太虚剑">太虚剑</option>
+        <option value="坐忘经">坐忘经</option>
+      </select>
+    </div>
+    <div class="shop-count" id="jxCount"></div>
+    <div id="jxKeywordTags" class="keyword-tag-area" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"></div>
+    <table class="shop-table" style="min-width:1400px">
+      <thead><tr>
+        <th style="width:44px">类别</th>
+        <th style="width:52px">门派</th>
+        <th style="width:auto">技能名</th>
+        <th style="width:48px">施展时间</th>
+        <th style="width:48px">施展距离</th>
+        <th style="width:44px">持续时间</th>
+        <th style="width:36px">消耗</th>
+        <th style="width:200px">关键词</th>
+        <th style="width:44px">条件</th>
+        <th style="width:90px">限制</th>
+        <th style="width:72px">费用</th>
+        <th style="width:20%">描述</th>
+        <th style="width:20%">效果</th>
+      </tr></thead>
+      <tbody id="jxBody">
+        <tr><td colspan="13" style="text-align:center;padding:60px;color:var(--text-muted)">数据加载中…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  </div>
+<!-- SHOP PAGE -->
+<div class="page" id="shopPage">
+  <div class="shop-content">
+    <div class="shop-header"><h1>🏪 主神空间·商店</h1><p>使用经验值、成就点、铭牌兑换商品</p></div>
+    <div class="shop-search">
+      <span style="font-size:16px">🔍</span>
+      <input id="shopSearch" placeholder="搜索名目/描述/类别/标签…" oninput="filterShop()" style="flex:1;background:var(--bg-primary)">
+      <select id="shopCategoryFilter" onchange="filterShop()" style="background:var(--bg-primary)">
+        <option value="">全部分类</option>
+        <option value="强化">强化</option>
+        <option value="道具">道具</option>
+        <option value="心法">心法</option>
+        <option value="其他">其他</option>
+      </select>
+      <select id="shopWorldFilter" onchange="filterShop()" style="background:var(--bg-primary)">
+        <option value="">全部世界</option>
+        <option value="主神空间">主神空间</option>
+        <option value="剑侠情缘">剑侠情缘</option>
+        <option value="迷雾岛">迷雾岛</option>
+        <option value="十全十美动物园">十全十美动物园</option>
+      </select>
+      <select id="shopRankFilter" onchange="filterShop()" style="background:var(--bg-primary)">
+        <option value="">全部阶位</option>
+        <option value="凡品">凡品</option>
+        <option value="良品">良品</option>
+        <option value="上品">上品</option>
+        <option value="极品">极品</option>
+        <option value="绝品">绝品</option>
+        <option value="一阶">一阶</option>
+        <option value="二阶">二阶</option>
+        <option value="三阶">三阶</option>
+        <option value="四阶">四阶</option>
+      </select>
+    </div>
+    <div class="shop-count" id="shopCount"></div>
+    <div id="shopTagArea" class="keyword-tag-area" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"></div>
+    <table class="shop-table">
+      <thead><tr>
+        <th style="width:60px">类别</th>
+        <th style="width:75px">来源世界</th>
+        <th style="width:55px">阶位</th>
+        <th style="width:auto">名目</th>
+        <th style="width:100px">标签</th><th style="width:22%">描述</th>
+        <th style="width:120px">价格</th>
+        <th style="width:80px">操作</th>
+      </tr></thead>
+      <tbody id="shopBody"></tbody>
+    </table>
+  </div>
+</div>
+<!-- DM PAGE -->
+<div class="page" id="dmPage" style="background:var(--bg-primary)">
+  <div class="char-content">
+    <div class="section mb-2" style="border-color:#7e57c2">
+      <div class="section-title" style="color:#b39ddb">🎯 全息数据 · 所有穿越者 <span class="badge">DM OVERVIEW</span></div>
+      <div id="dmOverviewBody" style="font-size:12px;color:var(--text-secondary)">加载角色数据中…</div>
+    </div>
+  </div>
+</div>
+
+<!-- SVG Definitions for Hearts, Leaves, Jars -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Heart clip path -->
+    <clipPath id="heartClip"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></clipPath>
+    <!-- Leaf clip path -->
+    <clipPath id="leafClip"><path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 008 20c4 0 8-2 8-7 0-2-1-3-2-4m-2 5a3 3 0 01-3 3c-.36 0-.72 0-1-.13a9.9 9.9 0 001.45-2.87C13.1 12.41 14 13.54 15 14"/></clipPath>
+  </defs>
+</svg>
+
+
+<!-- ═══════ 角色选择弹窗 ═══════ -->
+<div id="charSelectModal" class="cs-modal-overlay" style="display:none">
+  <div class="cs-modal">
+    <div class="cs-modal-hdr">选择加载角色</div>
+    <div id="charSelectList" class="cs-list"></div>
+    <div class="cs-modal-actions">
+      <button onclick="toggleAllChars(true)">全选</button>
+      <button onclick="toggleAllChars(false)">取消全选</button>
+      <button class="cs-confirm" onclick="confirmCharacterSelection()">确认加载</button>
+    </div>
+  </div>
+</div>
+
+<script src="scripts/dataBundle.js"></script>
+<script src="scripts/dataService.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/character.js"></script>
+<script src="scripts/shop.js"></script>
+</div>
+
+</body>
+</html>

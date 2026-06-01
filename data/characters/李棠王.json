@@ -1,0 +1,338 @@
+{
+  "characters": {
+    "李棠王": {
+      "identity": {
+        "charName": "李棠王",
+        "playerName": "龙昕宇",
+        "race": "人类",
+        "gender": "男",
+        "age": 26,
+        "height": 178,
+        "weight": 55,
+        "eyeColor": "棕瞳",
+        "skinColor": "黄皮",
+        "hairColor": "黑发",
+        "geneLockLevel": "一阶",
+        "geneLockEnabled": true,
+        "geneLockProf": 4,
+        "geneLockProfs": {
+          "一阶": 4,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 14,
+        "dex": 14,
+        "con": 13,
+        "int": 11,
+        "wis": 14,
+        "cha": 9
+      },
+      "derived": {
+        "level": 1,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 12,
+        "hpCurrent": 13,
+        "hpMax": 13,
+        "fatigueCurrent": 0,
+        "fatigueMax": 11,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 2,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": false,
+          "value": 0
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": true,
+          "value": 1
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": true,
+          "value": 1
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": true,
+          "value": 1
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": true,
+          "value": 1
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "枪械"
+      ],
+      "background": {
+        "bgPersonality": "记者。跟熟知的那些记者一样，为了生计追逐着花边新闻和流量热点",
+        "bgTraits": "胆小、怕死、但意外的有一颗义举之心",
+        "bgIdeals": "人终有一死，能不死就不死",
+        "bgBonds": "尊老爱幼，见不得老人小孩受苦受难",
+        "bgFlaws": "其实并不怎么会摄影技巧，但是记者也不完全依赖这些",
+        "bgEffects": {
+          "personality": "\t\t\t\t\t\t\t\t\t\t\t",
+          "traits": "当下行为满足是怀揣大义的条件时，你免疫恐惧、混乱等一系列消极情绪类异常状态\t",
+          "bonds": "对老人和小孩进行友善的交互时，魅力类检定有优势。",
+          "flaws": "拥有镜头恐惧症，进行拍摄和被拍摄都会进行意志豁免。",
+          "ideals": "每日限一次，进行求生检定时具有优势。"
+        }
+      },
+      "talents": [
+        "雾之亲和：你在迷雾类环境中大幅提升感知和观察能力，不受迷雾类效应的负面影响，缓慢恢复生命值。"
+      ],
+      "enhances": [
+        "已经历强化"
+      ],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "霰弹枪",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "白银20万两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "单兵口粮",
+          "qty": 10,
+          "weight": 0.5
+        },
+        {
+          "name": "紧急弹匣（信仰子弹）",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "大容量弹匣",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "子弹",
+          "qty": 20,
+          "weight": 0.5
+        },
+        {
+          "name": "子弹",
+          "qty": 20,
+          "weight": 0.5
+        },
+        {
+          "name": "消炎药",
+          "qty": 3,
+          "weight": 0.5
+        },
+        {
+          "name": "花188两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "金疮药",
+          "qty": 5,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "人类",
+        "race": "人类",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

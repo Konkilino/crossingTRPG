@@ -1,0 +1,334 @@
+{
+  "characters": {
+    "彭": {
+      "identity": {
+        "charName": "彭",
+        "playerName": "冒号",
+        "race": "畸变兽·雾巨人",
+        "gender": "男",
+        "age": 28,
+        "height": 181,
+        "weight": 145,
+        "eyeColor": "黑色",
+        "skinColor": "黄色",
+        "hairColor": "黑色",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 20,
+        "dex": 14,
+        "con": 20,
+        "int": 8,
+        "wis": 14,
+        "cha": 14
+      },
+      "derived": {
+        "level": 2,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 12,
+        "hpCurrent": 90,
+        "hpMax": 90,
+        "fatigueCurrent": 0,
+        "fatigueMax": 9,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 1,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": false,
+          "value": 0
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": true,
+          "value": 1
+        },
+        "dexStealth": {
+          "checked": true,
+          "value": 1
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": true,
+          "value": 1
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": false,
+          "value": 0
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "枪械"
+      ],
+      "background": {
+        "bgPersonality": "医生",
+        "bgEffects": {
+          "personality": "可以通过医疗检定消耗对应物资治疗常规伤势",
+          "traits": "每日限一次，可以在自己相信本次检定会成功时进行一次重骰。",
+          "ideals": "更容易识破那些不对等的交换行为",
+          "bonds": "进行相关娱乐活动时获得额外检定加值",
+          "flaws": "执行行动时总是会按照玩家最初的方案来执行"
+        },
+        "bgTraits": "坚定唯心主义者，只有自己相信才会成功",
+        "bgIdeals": "公平和等价交换是行为的底层逻辑",
+        "bgBonds": "喜欢跑团这个娱乐方式，记载着自己角色卡的故事笔记是羁绊最深物品",
+        "bgFlaws": "固执",
+        "bgMechanics": "可以通过医疗检定消耗对应物资治疗常规伤势 | 每日限一次，可以在自己相信本次检定会成功时进行一次重骰。 | 更容易识破那些不对等的交换行为 | 进行相关娱乐活动时获得额外检定加值 | 执行行动时总是会按照玩家最初的方案来执行"
+      },
+      "talents": [],
+      "enhances": [
+        "细胞活性强化·一阶",
+        "反应神经强化·一阶",
+        "骨骼强度强化·一阶",
+        "运动神经强化·一阶"
+      ],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "医疗包",
+          "qty": 5,
+          "weight": 0.5
+        },
+        {
+          "name": "注射器",
+          "qty": 30,
+          "weight": 0.5
+        },
+        {
+          "name": "消炎药",
+          "qty": 30,
+          "weight": 0.5
+        },
+        {
+          "name": "白银10万两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "野战背包",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "单兵口粮",
+          "qty": 15,
+          "weight": 0.5
+        },
+        {
+          "name": "花5两",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [
+        {
+          "name": "化身人形",
+          "castTime": "",
+          "range": "",
+          "duration": "",
+          "cost": 0,
+          "category": ""
+        }
+      ],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {}
+      },
+      "statusDetail": {
+        "bloodline": "畸变兽",
+        "race": "畸变兽",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}

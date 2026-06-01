@@ -1,0 +1,341 @@
+{
+  "characters": {
+    "严渠": {
+      "identity": {
+        "charName": "严渠",
+        "playerName": "Azk",
+        "race": "人类",
+        "gender": "男",
+        "age": 25,
+        "height": 182,
+        "weight": 65,
+        "eyeColor": "黑",
+        "skinColor": "黄",
+        "hairColor": "黑",
+        "geneLockLevel": "未开启",
+        "geneLockEnabled": false,
+        "geneLockProf": 0,
+        "geneLockProfs": {
+          "一阶": 0,
+          "二阶": 0,
+          "三阶": 0,
+          "四阶": 0
+        },
+        "mainClass": "",
+        "mainClassLevel": 1,
+        "subClass": "",
+        "subClassLevel": 1
+      },
+      "stats": {
+        "str": 16,
+        "dex": 12,
+        "con": 12,
+        "int": 12,
+        "wis": 10,
+        "cha": 10
+      },
+      "derived": {
+        "level": 1,
+        "ac": 10,
+        "initiative": 0,
+        "speed": 30,
+        "attackBonus": 0,
+        "vigilance": 10,
+        "hpCurrent": 22,
+        "hpMax": 22,
+        "fatigueCurrent": 0,
+        "fatigueMax": 12,
+        "xpCurrent": 0,
+        "xpMax": 100,
+        "will": 1,
+        "luck": 1,
+        "enlightenment": 1,
+        "fatigueLabel": "🍃 疲劳值"
+      },
+      "skills": {
+        "saveStr": {
+          "checked": false,
+          "value": 0
+        },
+        "powerStrike": {
+          "checked": false,
+          "value": 0
+        },
+        "athCarry": {
+          "checked": false,
+          "value": 0
+        },
+        "athJump": {
+          "checked": false,
+          "value": 0
+        },
+        "athClimb": {
+          "checked": false,
+          "value": 0
+        },
+        "athSwim": {
+          "checked": false,
+          "value": 0
+        },
+        "athCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveDex": {
+          "checked": false,
+          "value": 0
+        },
+        "dexGymnastics": {
+          "checked": false,
+          "value": 0
+        },
+        "dexRide": {
+          "checked": false,
+          "value": 0
+        },
+        "dexStealth": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightSteal": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightLock": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightDisarm": {
+          "checked": false,
+          "value": 0
+        },
+        "sleightCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCon": {
+          "checked": false,
+          "value": 0
+        },
+        "dexFocus": {
+          "checked": false,
+          "value": 0
+        },
+        "dexEndurance": {
+          "checked": false,
+          "value": 0
+        },
+        "saveCha": {
+          "checked": false,
+          "value": 0
+        },
+        "socDeceive": {
+          "checked": false,
+          "value": 0
+        },
+        "socIntimidate": {
+          "checked": false,
+          "value": 0
+        },
+        "socPersuade": {
+          "checked": false,
+          "value": 0
+        },
+        "perfSing": {
+          "checked": false,
+          "value": 0
+        },
+        "perfDance": {
+          "checked": false,
+          "value": 0
+        },
+        "perfCustom": {
+          "checked": false,
+          "value": 0
+        },
+        "saveInt": {
+          "checked": false,
+          "value": 0
+        },
+        "knoReligion": {
+          "checked": false,
+          "value": 0
+        },
+        "knoInvestigate": {
+          "checked": true,
+          "value": 1
+        },
+        "knoAppraise": {
+          "checked": false,
+          "value": 0
+        },
+        "knoForge": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLipRead": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLogic": {
+          "checked": false,
+          "value": 0
+        },
+        "knoLearn": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMagic": {
+          "checked": false,
+          "value": 0
+        },
+        "arcAlchemy": {
+          "checked": false,
+          "value": 0
+        },
+        "arcItem": {
+          "checked": false,
+          "value": 0
+        },
+        "arcMulti": {
+          "checked": false,
+          "value": 0
+        },
+        "genHistory": {
+          "checked": false,
+          "value": 0
+        },
+        "genGeography": {
+          "checked": false,
+          "value": 0
+        },
+        "genHumanity": {
+          "checked": false,
+          "value": 0
+        },
+        "genPolitics": {
+          "checked": false,
+          "value": 0
+        },
+        "saveWis": {
+          "checked": false,
+          "value": 0
+        },
+        "senInsight": {
+          "checked": false,
+          "value": 0
+        },
+        "senListen": {
+          "checked": false,
+          "value": 0
+        }
+      },
+      "customNames": {},
+      "otherProfs": [
+        "通用语"
+      ],
+      "background": {
+        "bgPersonality": "曾经独自开设小型侦探事务所，接的多是警方不愿碰、家属不甘心的冷门委托：寻人、追赃、婚内调查、陈年旧案等。",
+        "bgTraits": "观察力强，善于洞察细节和他人情绪",
+        "bgIdeals": "办案时会变得理性克制，注重客观事实",
+        "bgBonds": "共情能力强，喜欢帮助可怜之人",
+        "bgFlaws": "有一定的恐高症",
+        "bgMechanics": ""
+      },
+      "talents": [],
+      "enhances": [
+        "最终验证强化"
+      ],
+      "equipment": {},
+      "wealth": {
+        "currencies": [
+          {
+            "name": "银两",
+            "amount": 0
+          },
+          {
+            "name": "铜币",
+            "amount": 0
+          }
+        ]
+      },
+      "inventory": [
+        {
+          "name": "装备",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "单兵口粮",
+          "qty": 3,
+          "weight": 0.5
+        },
+        {
+          "name": "白银20万两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "花63两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "被劫走2两",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "培元丹",
+          "qty": 5,
+          "weight": 0.5
+        },
+        {
+          "name": "祛暑丹",
+          "qty": 2,
+          "weight": 0.5
+        },
+        {
+          "name": "80文",
+          "qty": 1,
+          "weight": 0.5
+        },
+        {
+          "name": "护身符",
+          "qty": 1,
+          "weight": 0.5
+        }
+      ],
+      "activeSlots": [
+        {
+          "name": "化身人形",
+          "castTime": "",
+          "range": "",
+          "duration": "",
+          "cost": 0,
+          "category": ""
+        }
+      ],
+      "passiveSlots": [],
+      "property": {
+        "mainXp": 0,
+        "mainAp": 0,
+        "badges": {
+          "一阶铭牌": 0,
+          "二阶铭牌": 0,
+          "三阶铭牌": 0,
+          "四阶铭牌": 0,
+          "五阶铭牌": 0,
+          "六阶铭牌": 0
+        }
+      },
+      "statusDetail": {
+        "bloodline": "人类",
+        "race": "人类",
+        "baseClass": "",
+        "promotion": "",
+        "promoState": ""
+      }
+    }
+  }
+}
