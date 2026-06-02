@@ -427,3 +427,7 @@ function checkForUpdates() {
   }
   window.electronAPI.checkForUpdates();
 }
+
+function showChangelog() {
+  window.open('https://github.com/Konkilino/crossingTRPG/blob/master/changelog.md', '_blank');
+}

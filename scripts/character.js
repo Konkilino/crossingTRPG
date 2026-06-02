@@ -80,7 +80,7 @@ const CAT_COLORS = {"力量":"#ff6b6b","敏捷":"#69db7c","体质":"#2ed573","�
 
 let _pageInited = false, _inChange = false;
 let _badges = {}; BADGE_TIERS.forEach(t=>_badges[t]=0);
-let _mainXp = 0, _mainAp = 0, _xpNext = 100, _currencies = [{name:'银两',amount:0},{name:'铜币',amount:0}];
+let _mainXp = 0, _mainAp = 0, _xpNext = 100, _currencies = [{name:'银两',amount:0,unit:'两'},{name:'铜币',amount:0,unit:'文'}];
 let _inventory = [], _activeSlots = [], _passiveSlots = [], _talents = [], _enhances = [];
 const _skillWidgets = {};
 
@@ -324,12 +324,41 @@ function buildCurrencyGrid(d){
   const grid=document.getElementById('currencyGrid');grid.innerHTML='';
   const data=d||_currencies;
   data.forEach((c,i)=>{
+    if (!c.unit) c.unit = '两';
     const s=document.createElement('div');s.className='cur-slot';
-    s.innerHTML='<div class="cur-name">'+c.name+'</div>';
-    const inp=document.createElement('input');inp.type='number';inp.value=c.amount||0;inp.min=0;
-    inp.oninput=function(){_currencies[i].amount=parseInt(this.value)||0;autoSave();};s.appendChild(inp);grid.appendChild(s);
+    s.innerHTML='<div class="cur-name" style="display:flex;align-items:center;justify-content:center;gap:4px">'
+      +'<span>'+c.name+'</span>'
+      +'<button onclick="delCurrency('+i+')" style="background:none;border:none;color:var(--accent-red);cursor:pointer;font-size:10px;padding:0;opacity:.5" title="删除">×</button>'
+      +'</div>';
+    var row=document.createElement('div');
+    row.style.cssText='display:flex;align-items:center;justify-content:center;gap:2px;margin-top:4px';
+    var bm=document.createElement('button');bm.textContent='−';
+    bm.style.cssText='background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);cursor:pointer;font-size:11px;padding:1px 6px';
+    bm.onclick=function(){adjCurrency(i,-1);}; row.appendChild(bm);
+    var inp=document.createElement('input');inp.type='number';inp.value=c.amount||0;inp.min=0;
+    inp.style.cssText='width:50px;text-align:center;font-size:13px;background:var(--bg-primary);border:1px solid var(--border);border-radius:3px;color:var(--text-primary);padding:2px';
+    inp.oninput=function(){adjCurrency(i,0,parseInt(this.value)||0);}; row.appendChild(inp);
+    var bp=document.createElement('button');bp.textContent='+';
+    bp.style.cssText='background:rgba(255,255,255,.05);border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);cursor:pointer;font-size:11px;padding:1px 6px';
+    bp.onclick=function(){adjCurrency(i,1);}; row.appendChild(bp);
+    s.appendChild(row);
+    var us=document.createElement('select');
+    us.style.cssText='font-size:10px;background:var(--bg-primary);border:1px solid var(--border);border-radius:3px;color:var(--text-secondary);margin-top:4px;width:90%';
+    ['两','文','元','万两','万元','枚','颗','块','锭'].forEach(function(u){
+      var o=document.createElement('option');o.value=u;o.textContent=u;
+      if(u===c.unit)o.selected=true; us.appendChild(o);
+    });
+    us.onchange=function(){_currencies[i].unit=this.value;autoSave();}; s.appendChild(us);
+    grid.appendChild(s);
   });
 }
+function adjCurrency(i,delta,specific){
+  var v=(typeof specific==='number')?specific:(_currencies[i].amount||0)+delta;
+  _currencies[i].amount=Math.max(0,v); autoSave();
+  var grid=document.getElementById('currencyGrid');
+  if(grid){var slots=grid.querySelectorAll('.cur-slot input[type=number]');if(slots[i])slots[i].value=_currencies[i].amount;}
+}
+function delCurrency(i){_currencies.splice(i,1);buildCurrencyGrid();autoSave();}
 function updateLoadCalc(){
   const strEl=document.getElementById('stat_str'),strVal=strEl?parseInt(strEl.value)||10:10;
   let carryProf=0;
@@ -350,7 +379,123 @@ function updateLoadCalc(){
   else if(cur<=base*15){st.textContent='重载（敏捷-5，速度减半）';bar.style.background='var(--accent-red)';}
   else{st.textContent='超载（无法移动）';bar.style.background='#ff0000';}
 }
-function addInvItem(){_inventory.push({name:'新物品',qty:1,weight:0});renderInventory();autoSave();}
+var _ipFilteredItems = [];
+
+function addInvItem(){
+  if (typeof _allItems !== 'undefined' && _allItems.length > 0) {
+    showItemPicker();
+  } else {
+    // fallback: no shop data loaded, create blank item
+    _inventory.push({name:'新物品',qty:1,weight:0});renderInventory();autoSave();
+  }
+}
+
+// ─── 物品检索弹窗 ─────────────────────────────────
+
+function showItemPicker(){
+  var m=document.getElementById('itemPickerModal'); if(!m)return;
+  m.style.display='flex';
+  document.getElementById('ipSearch').value='';
+  document.getElementById('ipCatFilter').value='';
+  // lazy-load shop data if not yet loaded
+  if (typeof _allItems === 'undefined' || _allItems.length === 0) {
+    if (typeof loadAllWorlds === 'function') {
+      document.getElementById('ipList').innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">⏳ 加载中...</div>';
+      loadAllWorlds().then(function(){ filterItemPicker(); });
+      return;
+    }
+  }
+  filterItemPicker();
+}
+
+function hideItemPicker(){
+  var m=document.getElementById('itemPickerModal'); if(m)m.style.display='none';
+}
+
+function filterItemPicker(){
+  var s=(document.getElementById('ipSearch').value||'').trim().toLowerCase();
+  var cf=document.getElementById('ipCatFilter').value;
+  var items = (typeof _allItems !== 'undefined') ? _allItems : [];
+  _ipFilteredItems = items.filter(function(e){
+    var it=e.item;
+    if(cf && e._cat !== cf) return false;
+    if(s){
+      var n=(it.name||'').toLowerCase(), d=(it.desc||'').toLowerCase();
+      if(n.indexOf(s)<0 && d.indexOf(s)<0) return false;
+    }
+    return true;
+  });
+  // limit to 50 results for performance
+  _ipFilteredItems = _ipFilteredItems.slice(0, 50);
+  renderItemPickerList();
+}
+
+function renderItemPickerList(){
+  var list=document.getElementById('ipList'); if(!list)return;
+  list.innerHTML='';
+  if (_ipFilteredItems.length === 0) {
+    list.innerHTML='<div style="text-align:center;padding:40px;color:var(--text-muted)">没有匹配的物品</div>';
+    return;
+  }
+  var rkCol = {凡品:'#8899aa',良品:'#66bb6a',上品:'#74c0fc',极品:'#b197fc',绝品:'#ef5350',一阶:'#66bb6a',二阶:'#74c0fc',三阶:'#b197fc',四阶:'#ffa94d'};
+  _ipFilteredItems.forEach(function(e){
+    var it=e.item;
+    var row=document.createElement('div');
+    row.className='cs-row';
+    row.style.cssText='display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05);cursor:pointer';
+    row.onclick=function(){ pickItem(it.name, it.type||''); };
+    row.onmouseover=function(){ this.style.background='rgba(38,198,218,.06)'; };
+    row.onmouseout=function(){ this.style.background=''; };
+    var catCol={强化:'#ffa94d',道具:'#74c0fc',心法:'#b197fc',其他:'#888'};
+    row.innerHTML='<span style="font-size:10px;color:'+(catCol[e._cat]||'#888')+';min-width:36px;text-align:center">'+e._cat+'</span>'
+      +'<span style="font-size:11px;color:'+(rkCol[it.rank]||'#888')+';min-width:36px;text-align:center">'+ (it.rank||'-') +'</span>'
+      +'<span style="flex:1;font-weight:600">'+it.name+'</span>'
+      +'<span style="font-size:11px;color:var(--text-secondary);max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+ (it.desc||'') +'</span>'
+      +'<span style="font-size:11px;color:#6a8ac4;min-width:60px;text-align:right">'+ (it.xpCost?it.xpCost+'EXP':'') + (it.apCost?' '+it.apCost+'AP':'') +'</span>';
+    list.appendChild(row);
+  });
+}
+
+// ─── 货币检测 ─────────────────────────────────────
+var _CURRENCY_PATTERNS = [
+  /白银/, /银锭/, /银两/, /银子/, /银票/, /纹银/,
+  /铜币/, /铜钱/, /铜板/,
+  /灵石/, /灵晶/, /灵玉/,
+  /金币/, /金条/, /金锭/, /金块/, /黄金/,
+  /元宝/, /银元/,
+  /贝利/, /戒尼/, /贝里/,
+  /晶石/, /魔石/, /魂晶/,
+  /勾玉/, /查克拉币/,
+];
+
+function isCurrencyItem(name) {
+  name = (name||'').toLowerCase();
+  for (var i = 0; i < _CURRENCY_PATTERNS.length; i++) {
+    if (_CURRENCY_PATTERNS[i].test(name)) return true;
+  }
+  return false;
+}
+
+function pickItem(name, type){
+  hideItemPicker();
+  if (isCurrencyItem(name)) {
+    // 货币类物品 → 加入货币板块
+    var exists = false;
+    for (var i = 0; i < _currencies.length; i++) {
+      if (_currencies[i].name === name) { exists = true; break; }
+    }
+    if (!exists) {
+      _currencies.push({name: name, amount: 0, unit: '两'});
+      buildCurrencyGrid();
+    }
+    if (typeof showToast === 'function') showToast('已添加货币: '+name);
+  } else {
+    // 普通物品 → 加入物品栏
+    _inventory.push({name: name, qty: 1, weight: 0.5});
+    renderInventory();
+  }
+  autoSave();
+}
 function renderInventory(){
   const tb=document.getElementById('invBody');tb.innerHTML='';
   _inventory.forEach((item,i)=>{
@@ -503,7 +648,7 @@ function gatherCharData(){
   }
   data.identity.geneLockProf=curTier!=='未开启'?(data.identity.geneLockProfs||{})[curTier]||0:0;
   ['weaponMain','weaponOff','armor'].forEach(k=>{const el=document.getElementById(k);data.equipment[k]=el?el.value:'';});
-  data.wealth.currencies=_currencies.map(c=>({name:c.name,amount:c.amount}));
+  data.wealth.currencies=_currencies.map(c=>({name:c.name,amount:c.amount,unit:c.unit||'两'}));
   data.inventory=_inventory.map(i=>({name:i.name,qty:i.qty,weight:i.weight}));
   data.activeSlots=_activeSlots.map(s=>(Object.assign({},s)));data.passiveSlots=_passiveSlots.map(s=>(Object.assign({},s)));
   return data;
@@ -959,8 +1104,8 @@ function onPromotionChange(){
   updateStatusEffect();
 }
 // 基因锁解锁阈值：一阶满10，二阶满20，三阶满30，四阶满40
+// 解锁规则：只需前一阶已开启（geneLockProfs 中有记录）即可解锁后一阶
 var GENE_LOCK_MAX = { '一阶': 10, '二阶': 20, '三阶': 30, '四阶': 40 };
-var GENE_UNLOCK_NEED = { '二阶': 10, '三阶': 20, '四阶': 30 };
 var _inGeneLockUpdate = false;
 function onGeneLockLevelChange(){
   if(_inGeneLockUpdate||_inChange)return;
@@ -989,7 +1134,22 @@ function onGeneLockLevelChange(){
   onCharFieldChange('geneLockLevel');
 }
 
-// 更新基因锁等级选项：前一阶熟练度≥50才解锁后一阶
+// 基因锁熟练度变更：同步保存到 geneLockProfs
+function onGeneLockProfChange(){
+  if(_inChange)return;
+  var sel=document.getElementById('idGeneLockLevel');
+  var prof=document.getElementById('idGeneLockProf');
+  if(!sel||!prof)return;
+  var tier=sel.value;
+  if(tier==='未开启')return;
+  if(currentCharName&&characters[currentCharName]){
+    if(!characters[currentCharName].identity.geneLockProfs)characters[currentCharName].identity.geneLockProfs={};
+    characters[currentCharName].identity.geneLockProfs[tier]=parseInt(prof.value)||0;
+  }
+  onCharFieldChange('geneLockProf');
+}
+
+// 更新基因锁等级选项：前一阶已开启即可解锁后一阶
 function updateGeneLockTierOptions(){
   var sel=document.getElementById('idGeneLockLevel');
   if(!sel)return;
@@ -1004,12 +1164,13 @@ function updateGeneLockTierOptions(){
     if(t==='未开启'||t==='一阶'){
       opt.textContent=t;
     }else{
-      var need=GENE_UNLOCK_NEED[t]||10;
-      var prevProf=profs[tiers[i-1]]||0;
-      if(prevProf>=need){
+      var prevTier=tiers[i-1];
+      // 只要前一阶曾经开启过（profs 中有记录），即可解锁后一阶
+      var prevOpened=profs.hasOwnProperty(prevTier);
+      if(prevOpened){
         opt.textContent=t;
       }else{
-        opt.textContent=t+' (需'+tiers[i-1]+'熟练≥'+need+')';
+        opt.textContent=t+' (需先开启'+prevTier+')';
         opt.disabled=true;
       }
     }
