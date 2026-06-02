@@ -1,6 +1,6 @@
 {
   "name": "crossing-trpg-terminal",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "description": "穿越团 · 主神空间终端",
   "main": "main.js",
   "scripts": {
