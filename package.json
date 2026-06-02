@@ -9,7 +9,7 @@
     "open": "start index.html",
     "buildBundle": "node scripts/buildDataBundle.js",
     "pack": "electron-packager . CrossingTRPG --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\".git|.claude|.md$|.github\" --electron-version=33.4.11",
-    "dist": "npm run buildBundle && npm run pack && electron-builder --win nsis --prepackaged \"dist/CrossingTRPG-win32-x64\""
+    "dist": "npm run buildBundle && npm run pack && copy /Y app-update.yml dist\\CrossingTRPG-win32-x64\\resources\\ && electron-builder --win nsis --prepackaged \"dist/CrossingTRPG-win32-x64\""
   },
   "build": {
     "appId": "com.crossing.trpg-terminal",
@@ -43,7 +43,13 @@
       "provider": "github",
       "owner": "Konkilino",
       "repo": "crossingTRPG"
-    }
+    },
+    "extraResources": [
+      {
+        "from": "app-update.yml",
+        "to": "app-update.yml"
+      }
+    ]
   },
   "dependencies": {
     "electron-log": "^5.3.0",
