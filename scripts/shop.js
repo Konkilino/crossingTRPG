@@ -170,6 +170,8 @@ function buyShopItem(name){
   if(cat==="强化"){
     if(!c.enhances)c.enhances=[];
     if(c.enhances.indexOf(it.name)<0) c.enhances.push(it.name);
+    // Sync to character page module variable to prevent autoSave wipe
+    if(typeof _enhances!=='undefined'){ _enhances=c.enhances.slice(); if(typeof renderTags==='function')renderTags('enhanceArea',_enhances,removeEnhance); }
   } else if(cat==="其他" && (it.type==="武器"||it.type==="防具")){
     // 装备类：优先填装备槽，否则放物品栏
     if(!c.inventory)c.inventory=[];
@@ -211,6 +213,8 @@ function cancelPurchase(name){
   if(cat==="强化"&&c.enhances){
     var ei=c.enhances.indexOf(it.name);
     if(ei>=0){c.enhances.splice(ei,1);found=true;}
+    // Sync to character page module variable
+    if(typeof _enhances!=='undefined'){ _enhances=c.enhances.slice(); if(typeof renderTags==='function')renderTags('enhanceArea',_enhances,removeEnhance); }
   }
   if(cat==="心法"&&c.activeSlots){
     for(var i=c.activeSlots.length-1;i>=0;i--){
