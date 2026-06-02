@@ -206,6 +206,12 @@ function parseChar(name, data) {
   } else {
     c.background.bgPersonality = persRaw;
   }
+  // Also try L column (col 11) for personality effect
+  var persEffL = get(data, 38, 11);
+  if (persEffL) {
+    c.background.bgEffects = c.background.bgEffects || {};
+    c.background.bgEffects.personality = persEffL;
+  }
   // 个人特点 (R39): B=描述, L=效果
   c.background.bgTraits = get(data, 39, 1) || '';
   var traitsEff = get(data, 39, 11);
@@ -233,7 +239,7 @@ function parseChar(name, data) {
   var enhances = [];
   for (var r = 6; r < 12; r++) {
     var ev = get(data, r, 14);
-    if (ev && ev !== '特殊专长' && ev !== '已经历强化') enhances.push(ev);
+    if (ev && ev !== '特殊专长' && !ev.startsWith('已经历强化')) enhances.push(ev);
   }
   c.enhances = enhances;
 
@@ -287,5 +293,4 @@ wb.SheetNames.forEach(function(sheetName) {
   count++;
 });
 
-console.log("
-Done: " + count + " characters -> data/characters/");
+console.log("\nDone: " + count + " characters -> data/characters/");
