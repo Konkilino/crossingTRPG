@@ -2,6 +2,7 @@
   "version": "1.0",
   "worlds": {
     "mainspace": { "name": "主神空间", "icon": "🏪", "color": "#26c6da", "path": "data/worlds/mainspace/items.json" },
-    "jianxia": { "name": "剑侠情缘", "icon": "🗡️", "color": "#ef5350", "path": "data/worlds/jianxia/items.json" }
+    "jianxia": { "name": "剑侠情缘", "icon": "🗡️", "color": "#ef5350", "path": "data/worlds/jianxia/items.json" },
+    "mist_island": { "name": "雾岛", "icon": "🌫️", "color": "#a0a0ff", "path": "data/worlds/mist_island/items.json" }
   }
 }

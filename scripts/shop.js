@@ -5,8 +5,157 @@
 var _allItems = [];   // { item, _worldId, _worldName, _cat }
 var _shopReady = false;
 
+// ═══════ Session Cart System ═══════
+var _shopCart = {};         // { itemName: qty }
+var _shopCartTotalXp = 0;
+var _shopCartTotalAp = 0;
+var _shopCartCharName = null; // tracks which character the cart belongs to
+
 function mapCat(t){ var m={强化:"强化",道具:"道具",技能:"心法",功法:"心法",武器:"其他",防具:"其他",天材地宝:"道具",神兵利器:"其他"}; return m[t]||"其他"; }
 function rankW(r){ var w={凡品:0,良品:1,上品:2,极品:3,绝品:4,一阶:5,二阶:6,三阶:7,四阶:8,五阶:9,六阶:10}; return w[r]!=null?w[r]:99; }
+
+// Returns owned qty: 1/0 for limited, inventory count for non-limited
+function getOwnedQty(itemName, limitType){
+  if(!window.currentCharName||!window.characters||!window.characters[currentCharName])return 0;
+  var c=window.characters[currentCharName];
+  if(limitType==="limited"){
+    var found=false;
+    (c.enhances||[]).forEach(function(e){if(e===itemName)found=true;});
+    (c.inventory||[]).forEach(function(iv){if(iv.name===itemName)found=true;});
+    (c.activeSlots||[]).forEach(function(s){if(s.name===itemName)found=true;});
+    (c.passiveSlots||[]).forEach(function(s){if(s.name===itemName)found=true;});
+    if(c.equipment){
+      if(c.equipment.weaponMain===itemName)found=true;
+      if(c.equipment.weaponOff===itemName)found=true;
+      if(c.equipment.armor===itemName)found=true;
+    }
+    return found?1:0;
+  }
+  var count=0;
+  (c.inventory||[]).forEach(function(iv){if(iv.name===itemName)count+=(iv.qty||1);});
+  return count;
+}
+
+// Cart mutation
+function addToCart(itemName){
+  if(!currentCharName||!characters||!characters[currentCharName]){showToast("请先选择角色");return;}
+  var match=_allItems.find(function(e){return e.item.name===itemName;});
+  if(!match)return;
+  var it=match.item;
+  var limitType=it.limit||"";
+  if(!limitType){buyShopItem(itemName);return;} // legacy fallback
+  var curQty=_shopCart[itemName]||0;
+  if(limitType==="limited"){
+    var owned=getOwnedQty(itemName,"limited");
+    if(owned>0||curQty>0){showToast("已拥有 "+itemName+"（限定）");return;}
+    _shopCart[itemName]=1;
+  }else{
+    _shopCart[itemName]=curQty+1;
+  }
+  _shopCartCharName=currentCharName;
+  recalcCartTotal();
+  refreshShop();
+}
+
+function removeFromCart(itemName){
+  var curQty=_shopCart[itemName]||0;
+  if(curQty<=0)return;
+  if(curQty===1){delete _shopCart[itemName];}
+  else{_shopCart[itemName]=curQty-1;}
+  recalcCartTotal();
+  refreshShop();
+}
+
+function clearCart(){
+  _shopCart={};
+  _shopCartTotalXp=0;
+  _shopCartTotalAp=0;
+  _shopCartCharName=null;
+  refreshShop();
+}
+
+function recalcCartTotal(){
+  var totalXp=0,totalAp=0;
+  for(var name in _shopCart){
+    var qty=_shopCart[name];
+    if(qty<=0)continue;
+    var match=_allItems.find(function(e){return e.item.name===name;});
+    if(match){totalXp+=(match.item.xpCost||0)*qty;totalAp+=(match.item.apCost||0)*qty;}
+  }
+  _shopCartTotalXp=totalXp;
+  _shopCartTotalAp=totalAp;
+  renderCartSummary();
+}
+
+// ═══════ Confirm Exchange ═══════
+function confirmExchange(){
+  if(!currentCharName||!characters||!characters[currentCharName]){showToast("请先选择角色");return;}
+  var c=characters[currentCharName];
+  var xp=(c.property?c.property.mainXp:0)||0;
+  var ap=(c.property?c.property.mainAp:0)||0;
+  if(xp<_shopCartTotalXp){showToast("经验值不足 (需要 "+_shopCartTotalXp+")");return;}
+  if(ap<_shopCartTotalAp){showToast("成就点不足 (需要 "+_shopCartTotalAp+")");return;}
+  var cartKeys=Object.keys(_shopCart);
+  if(cartKeys.length===0){showToast("购物车为空");return;}
+  var count=cartKeys.length;
+  var snapshot={};cartKeys.forEach(function(k){snapshot[k]=_shopCart[k];});
+  c.property.mainXp=xp-_shopCartTotalXp;
+  c.property.mainAp=ap-_shopCartTotalAp;
+  for(var name in snapshot){
+    var qty=snapshot[name];
+    if(qty<=0)continue;
+    var match=_allItems.find(function(e){return e.item.name===name;});
+    if(!match)continue;
+    var it=match.item;
+    var cat=mapCat(it.type||"");
+    if(cat==="强化"){
+      if(!c.enhances)c.enhances=[];
+      if(c.enhances.indexOf(it.name)<0)c.enhances.push(it.name);
+      if(typeof _enhances!=='undefined'){_enhances=c.enhances.slice();if(typeof renderTags==='function')renderTags('enhanceArea',_enhances,removeEnhance);}
+    }else if(cat==="其他"&&(it.type==="武器"||it.type==="防具")){
+      if(!c.inventory)c.inventory=[];
+      for(var j=0;j<qty;j++){c.inventory.push({name:it.name,qty:1,weight:1.0});}
+      if(it.type==="武器"&&(!c.equipment||!c.equipment.weaponMain)){if(!c.equipment)c.equipment={};c.equipment.weaponMain=it.name;}
+      else if(it.type==="防具"&&(!c.equipment||!c.equipment.armor)){if(!c.equipment)c.equipment={};c.equipment.armor=it.name;}
+    }else if(cat==="心法"){
+      if(!c.activeSlots)c.activeSlots=[];
+      for(var j=0;j<qty;j++){c.activeSlots.push({name:it.name,category:"商店技能",cost:0});}
+    }else{
+      if(!c.inventory)c.inventory=[];
+      c.inventory.push({name:it.name,qty:qty,weight:0.5});
+    }
+  }
+  _shopCart={};_shopCartTotalXp=0;_shopCartTotalAp=0;_shopCartCharName=null;
+  if(typeof autoSave==="function")autoSave();
+  if(currentCharName&&characters&&characters[currentCharName]){
+    var ci=characters[currentCharName].inventory;
+    if(ci){_inventory=ci.map(function(i){return{name:i.name,qty:i.qty,weight:i.weight||0};});if(typeof renderInventory==='function')renderInventory();if(typeof updateLoadCalc==='function')updateLoadCalc();}
+  }
+  showToast("✅ 已兑换 "+count+" 项商品");
+  refreshShop();
+}
+
+// ═══════ Cart Display ═══════
+function renderCartSummary(){
+  var bar=document.getElementById("shopCartBar");
+  if(!bar)return;
+  var totalEl=document.getElementById("shopCartTotal");
+  var countEl=document.getElementById("shopCartCount");
+  var confirmBtn=document.getElementById("shopCartConfirmBtn");
+  var count=Object.keys(_shopCart).length;
+  if(count===0){bar.style.display="none";}
+  else{
+    bar.style.display="flex";
+    if(totalEl){
+      var parts=[];
+      if(_shopCartTotalXp)parts.push(_shopCartTotalXp+" EXP");
+      if(_shopCartTotalAp)parts.push(_shopCartTotalAp+" AP");
+      totalEl.textContent="总花费: "+(parts.length?parts.join(" + "):"免费");
+    }
+    if(countEl)countEl.textContent="("+count+" 项)";
+    if(confirmBtn)confirmBtn.disabled=false;
+  }
+}
 
 // ═════════ INIT ═════════
 function initShopPage(){
@@ -62,6 +211,10 @@ function toggleShopTag(tag){
 }
 
 function refreshShop(){
+  // Clear cart if character changed
+  if(_shopCartCharName&&_shopCartCharName!==currentCharName){
+    _shopCart={};_shopCartTotalXp=0;_shopCartTotalAp=0;_shopCartCharName=null;
+  }
   var s=(document.getElementById("shopSearch")||{}).value||"";
   var cf=(document.getElementById("shopCategoryFilter")||{}).value||"";
   var wf=(document.getElementById("shopWorldFilter")||{}).value||"";
@@ -106,6 +259,7 @@ function refreshShop(){
   });
   r.sort(function(a,b){return rankW(a.item.rank)-rankW(b.item.rank);});
   renderTable(r);
+  renderCartSummary();
 }
 
 function renderTable(items){
@@ -128,7 +282,7 @@ function renderTable(items){
   }
   var catCol={强化:"#ffa94d",道具:"#74c0fc",心法:"#b197fc",其他:"#888"};
   var rkCol={凡品:"#8899aa",良品:"#66bb6a",上品:"#74c0fc",极品:"#b197fc",绝品:"#ef5350",一阶:"#66bb6a",二阶:"#74c0fc",三阶:"#b197fc",四阶:"#ffa94d"};
-  var worldCol={"主神空间":"var(--accent-cyan)","剑侠情缘":"var(--accent-orange)","迷雾岛":"#a0a0ff","十全十美动物园":"#ffa94d"};
+  var worldCol={"主神空间":"var(--accent-cyan)","剑侠情缘":"var(--accent-orange)","迷雾岛":"#a0a0ff","十全十美动物园":"#ffa94d","雾岛":"#a0a0ff"};
 
   items.forEach(function(e){var it=e.item;
     var tr=document.createElement("tr");
@@ -143,7 +297,27 @@ function renderTable(items){
       '<td style="font-size:12px;color:var(--text-secondary)">'+(it.desc||"")+'</td>'+
       '<td style="font-size:12px;color:#6a8ac4;font-weight:600;font-family:var(--font-mono)">'+(function(){var p=[];if(it.xpCost)p.push(it.xpCost+"EXP");if(it.apCost)p.push(it.apCost+"AP");if(it.badgeCost)p.push(it.badgeCost);return p.length?p.join("+"):"免费";})()+'</td>'+
       '<td>'+(function(){
-        if(window.currentCharName&&e._worldId==="mainspace"){
+        if(!window.currentCharName||!window.characters||!window.characters[currentCharName])return '-';
+        var limitType=it.limit||"";
+        // === Cart-based mode (has limit field) ===
+        if(limitType){
+          var ownedQty=getOwnedQty(it.name,limitType);
+          var cartQty=_shopCart[it.name]||0;
+          if(limitType==="limited"){
+            if(ownedQty>0)return'<span style="font-size:10px;color:var(--text-muted)">已拥有（限定）</span>';
+            if(cartQty>0)return'<button onclick="removeFromCart(\x27'+it.name+'\x27)" style="background:transparent;border:1px solid #ef5350;border-radius:4px;color:#ef5350;cursor:pointer;font-size:11px;padding:2px 8px">✕ 移除</button>';
+            return'<button onclick="addToCart(\x27'+it.name+'\x27)" style="background:transparent;border:1px solid var(--accent-cyan);border-radius:4px;color:var(--accent-cyan);cursor:pointer;font-size:11px;padding:2px 10px">购买</button>';
+          }
+          // Non-limited
+          var disMinus=cartQty<=0?'opacity:0.3;cursor:default':'';
+          return'<span style="display:flex;align-items:center;gap:4px;white-space:nowrap">'+
+            '<button onclick="removeFromCart(\x27'+it.name+'\x27)" style="background:transparent;border:1px solid #ef5350;border-radius:3px;color:#ef5350;cursor:pointer;font-size:11px;width:22px;padding:1px 0;'+disMinus+'"'+(cartQty<=0?' disabled':'')+'>−</button>'+
+            '<span style="font-size:12px;font-weight:600;color:var(--accent-gold);min-width:18px;text-align:center">'+cartQty+'</span>'+
+            '<button onclick="addToCart(\x27'+it.name+'\x27)" style="background:transparent;border:1px solid var(--accent-cyan);border-radius:3px;color:var(--accent-cyan);cursor:pointer;font-size:11px;width:22px;padding:1px 0">+</button>'+
+            '<span style="font-size:9px;color:var(--text-muted);margin-left:2px">有:'+ownedQty+'</span></span>';
+        }
+        // === Legacy mode (no limit field) ===
+        if(e._worldId==="mainspace"){
           if(owned[it.name]) return '<button onclick="cancelPurchase(\x27'+it.name+'\x27)" style="background:transparent;border:1px solid #ef5350;border-radius:4px;color:#ef5350;cursor:pointer;font-size:11px;padding:2px 10px">取消</button>';
           return '<button onclick="buyShopItem(\x27'+it.name+'\x27)" style="background:transparent;border:1px solid var(--accent-cyan);border-radius:4px;color:var(--accent-cyan);cursor:pointer;font-size:11px;padding:2px 10px">购买</button>';
         }
@@ -159,6 +333,8 @@ function buyShopItem(name){
   if(!currentCharName||!characters||!characters[currentCharName]){showToast("请先选择角色");return;}
   var match=_allItems.find(function(e){return e.item.name===name;});
   if(!match)return; var it=match.item;
+  // If item has limit field, delegate to cart system
+  if(it.limit){addToCart(name);return;}
   var c=characters[currentCharName];
   var xp=c.property?c.property.mainXp||0:0, ap=c.property?c.property.mainAp||0:0;
   if(xp<(it.xpCost||0)){showToast("经验值不足");return;}

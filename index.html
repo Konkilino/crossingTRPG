@@ -482,6 +482,7 @@
         <option value="剑侠情缘">剑侠情缘</option>
         <option value="迷雾岛">迷雾岛</option>
         <option value="十全十美动物园">十全十美动物园</option>
+        <option value="雾岛">雾岛</option>
       </select>
       <select id="shopRankFilter" onchange="refreshShop()" style="background:var(--bg-primary)">
         <option value="">全部阶位</option>
@@ -510,6 +511,14 @@
       </tr></thead>
       <tbody id="shopBody"></tbody>
     </table>
+    <div id="shopCartBar" style="display:none;position:sticky;bottom:0;background:var(--bg-card);border:1px solid var(--accent-gold);border-radius:var(--radius);padding:10px 16px;margin-top:12px;align-items:center;gap:12px;z-index:10">
+      <span style="font-size:11px;color:var(--text-muted)">🛒 待兑换</span>
+      <span id="shopCartCount" style="font-size:11px;color:var(--text-secondary)"></span>
+      <span style="flex:1"></span>
+      <span id="shopCartTotal" style="font-size:13px;font-weight:700;color:var(--accent-gold);font-family:var(--font-mono)"></span>
+      <button id="shopCartConfirmBtn" onclick="confirmExchange()" style="background:var(--accent-gold);border:none;border-radius:4px;color:#000;cursor:pointer;font-size:12px;font-weight:600;padding:6px 16px">确认兑换</button>
+      <button onclick="clearCart()" style="background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--text-muted);cursor:pointer;font-size:11px;padding:6px 12px">清空</button>
+    </div>
   </div>
 </div>
 <!-- DM PAGE -->

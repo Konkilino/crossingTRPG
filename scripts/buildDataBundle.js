@@ -17,6 +17,7 @@ var files = [
   'data/world_registry.json',
   'data/worlds/mainspace/items.json',
   'data/worlds/jianxia/items.json',
+  'data/worlds/mist_island/items.json',
   'data/status_refs/bloodline.json',
   'data/status_refs/race.json',
   'data/status_refs/base_class.json',
