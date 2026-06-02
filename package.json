@@ -8,7 +8,7 @@
     "server": "node server.js",
     "open": "start index.html",
     "buildBundle": "node scripts/buildDataBundle.js",
-    "pack": "electron-packager . CrossingTRPG --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"node_modules|.claude|.md$\" --electron-version=33.4.11",
+    "pack": "electron-packager . CrossingTRPG --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\".git|.claude|.md$|.github\" --electron-version=33.4.11",
     "dist": "npm run buildBundle && npm run pack && electron-builder --win nsis --prepackaged \"dist/CrossingTRPG-win32-x64\""
   },
   "build": {
@@ -24,6 +24,7 @@
       "scripts/**/*",
       "styles/**/*",
       "data/**/*",
+      "node_modules/**/*",
       "!data/api/**",
       "!*.md",
       "!.claude/**"
@@ -44,11 +45,13 @@
       "repo": "crossingTRPG"
     }
   },
+  "dependencies": {
+    "electron-log": "^5.3.0",
+    "electron-updater": "^6.0.1"
+  },
   "devDependencies": {
     "@electron/packager": "^20.0.0",
     "electron": "^33.0.0",
-    "electron-builder": "^25.0.0",
-    "electron-log": "^5.3.0",
-    "electron-updater": "^6.0.1"
+    "electron-builder": "^25.0.0"
   }
 }
