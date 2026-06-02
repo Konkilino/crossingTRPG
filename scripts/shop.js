@@ -163,6 +163,18 @@ function buyShopItem(name){
   var xp=c.property?c.property.mainXp||0:0, ap=c.property?c.property.mainAp||0:0;
   if(xp<(it.xpCost||0)){showToast("经验值不足");return;}
   if(ap<(it.apCost||0)){showToast("成就点不足");return;}
+  // Check if already owned (prevents double purchase from any code path)
+  var alreadyOwned = false;
+  (c.enhances||[]).forEach(function(e){if(e===name)alreadyOwned=true;});
+  (c.inventory||[]).forEach(function(iv){if(iv.name===name)alreadyOwned=true;});
+  (c.activeSlots||[]).forEach(function(s){if(s.name===name)alreadyOwned=true;});
+  (c.passiveSlots||[]).forEach(function(s){if(s.name===name)alreadyOwned=true;});
+  if(c.equipment){
+    if(c.equipment.weaponMain===name)alreadyOwned=true;
+    if(c.equipment.weaponOff===name)alreadyOwned=true;
+    if(c.equipment.armor===name)alreadyOwned=true;
+  }
+  if(alreadyOwned){showToast("已拥有该物品");return;}
   c.property.mainXp=xp-(it.xpCost||0); c.property.mainAp=ap-(it.apCost||0);
 
   var cat=mapCat(it.type||"");

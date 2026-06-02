@@ -490,8 +490,17 @@ function pickItem(name, type){
     }
     if (typeof showToast === 'function') showToast('已添加货币: '+name);
   } else {
-    // 普通物品 → 加入物品栏
-    _inventory.push({name: name, qty: 1, weight: 0.5});
+    // 普通物品 → 加入物品栏（去重）
+    var dupIdx = -1;
+    for (var j = 0; j < _inventory.length; j++) {
+      if (_inventory[j].name === name) { dupIdx = j; break; }
+    }
+    if (dupIdx >= 0) {
+      _inventory[dupIdx].qty = (_inventory[dupIdx].qty || 1) + 1;
+      if (typeof showToast === 'function') showToast(name+' 数量 +1 (现有 '+_inventory[dupIdx].qty+')');
+    } else {
+      _inventory.push({name: name, qty: 1, weight: 0.5});
+    }
     renderInventory();
   }
   autoSave();
