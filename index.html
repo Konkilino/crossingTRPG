@@ -427,7 +427,7 @@
     </div>
     <div class="shop-count" id="jxCount"></div>
     <div id="jxKeywordTags" class="keyword-tag-area" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"></div>
-    <table class="shop-table" style="min-width:1400px">
+    <table class="shop-table" style="min-width:100%">
       <thead><tr>
         <th style="width:44px">类别</th>
         <th style="width:52px">门派</th>
@@ -440,8 +440,8 @@
         <th style="width:44px">条件</th>
         <th style="width:90px">限制</th>
         <th style="width:72px">费用</th>
-        <th style="width:20%">描述</th>
-        <th style="width:20%">效果</th>
+        <th style="min-width:220px; width:20%">描述</th>
+        <th style="min-width:220px; width:20%">效果</th>
       </tr></thead>
       <tbody id="jxBody">
         <tr><td colspan="13" style="text-align:center;padding:60px;color:var(--text-muted)">数据加载中…</td></tr>
@@ -457,22 +457,22 @@
     <div class="shop-header"><h1>🏪 主神空间·商店</h1><p>使用经验值、成就点、铭牌兑换商品</p></div>
     <div class="shop-search">
       <span style="font-size:16px">🔍</span>
-      <input id="shopSearch" placeholder="搜索名目/描述/类别/标签…" oninput="filterShop()" style="flex:1;background:var(--bg-primary)">
-      <select id="shopCategoryFilter" onchange="filterShop()" style="background:var(--bg-primary)">
+      <input id="shopSearch" placeholder="搜索名目/描述/类别/标签…" oninput="refreshShop()" style="flex:1;background:var(--bg-primary)">
+      <select id="shopCategoryFilter" onchange="refreshShop()" style="background:var(--bg-primary)">
         <option value="">全部分类</option>
         <option value="强化">强化</option>
         <option value="道具">道具</option>
         <option value="心法">心法</option>
         <option value="其他">其他</option>
       </select>
-      <select id="shopWorldFilter" onchange="filterShop()" style="background:var(--bg-primary)">
+      <select id="shopWorldFilter" onchange="refreshShop()" style="background:var(--bg-primary)">
         <option value="">全部世界</option>
         <option value="主神空间">主神空间</option>
         <option value="剑侠情缘">剑侠情缘</option>
         <option value="迷雾岛">迷雾岛</option>
         <option value="十全十美动物园">十全十美动物园</option>
       </select>
-      <select id="shopRankFilter" onchange="filterShop()" style="background:var(--bg-primary)">
+      <select id="shopRankFilter" onchange="refreshShop()" style="background:var(--bg-primary)">
         <option value="">全部阶位</option>
         <option value="凡品">凡品</option>
         <option value="良品">良品</option>

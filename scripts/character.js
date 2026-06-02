@@ -722,6 +722,11 @@ function renderDmOverview(){
     if(effs.bonds&&effs.bonds.trim()) traitParts.push("牵绊: "+effs.bonds.trim());
     if(effs.flaws&&effs.flaws.trim()) traitParts.push("缺点: "+effs.flaws.trim());
     if(traitParts.length>0)html+="<div class=\"dm-skills-row\"><span class=\"dm-info-lbl\">📜 特质效果</span><span class=\"dm-skills-text\" style=\"font-size:10px\">"+traitParts.join("；")+"</span></div>";
+    // 已经历强化
+    var enhList = c.enhances || [];
+    if (enhList.length > 0) {
+        html += '<div class="dm-skills-row"><span class="dm-info-lbl">已经历强化</span><span class="dm-skills-text" style="font-size:10px">' + enhList.join('；') + '</span></div>';
+    }
 
     // 单独发放按钮
     html+='<div class="dm-actions" style="margin-top:6px;border-top:1px solid rgba(255,255,255,.04);padding-top:6px">';

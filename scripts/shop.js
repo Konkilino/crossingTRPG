@@ -189,6 +189,15 @@ function buyShopItem(name){
     c.inventory.push({name:it.name,qty:1,weight:0.5});
   }
   if(typeof autoSave==="function")autoSave();
+  // Sync inventory to UI
+  if(typeof currentCharName!=='undefined'&&currentCharName&&characters&&characters[currentCharName]){
+    var ci=characters[currentCharName].inventory;
+    if(ci){
+      _inventory=ci.map(function(i){return {name:i.name,qty:i.qty,weight:i.weight||0};});
+      if(typeof renderInventory==='function')renderInventory();
+      if(typeof updateLoadCalc==='function')updateLoadCalc();
+    }
+  }
   showToast("✅ 已购买 "+it.name); refreshShop();
 }
 function cancelPurchase(name){
@@ -224,6 +233,15 @@ function cancelPurchase(name){
     c.property.mainAp=(c.property.mainAp||0)+Math.floor((match.item.apCost||0)*0.7);
   }
   if(typeof autoSave==="function")autoSave();
+  // Sync inventory to UI
+  if(typeof currentCharName!=='undefined'&&currentCharName&&characters&&characters[currentCharName]){
+    var ci=characters[currentCharName].inventory;
+    if(ci){
+      _inventory=ci.map(function(i){return {name:i.name,qty:i.qty,weight:i.weight||0};});
+      if(typeof renderInventory==='function')renderInventory();
+      if(typeof updateLoadCalc==='function')updateLoadCalc();
+    }
+  }
   showToast("↩ 已取消 "+name); refreshShop();
 }
 

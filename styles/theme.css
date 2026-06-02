@@ -280,7 +280,7 @@ table th {
   border-bottom: 1px solid var(--border);
   font-weight: 600;
 }
-table td { padding: 4px 8px; border-bottom: 1px solid #0d0d1a; }
+table td { padding: 4px 8px; border-bottom: 1px solid #0d0d1a; word-break: break-word; overflow-wrap: break-word; }
 table input {
   background: transparent;
   border: none;

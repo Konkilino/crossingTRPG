@@ -5,6 +5,34 @@
 
 ---
 
+## v2.1 (2026-06-02) — Bug 修复与项目整理
+
+### Bug 修复
+
+- **剑侠情缘技能展示**: 修复表格横向溢出和文本截断问题 — `min-width:1400px` 改为 `100%`, td 增加 `word-break`, desc/effect 列增加 `min-width:220px`
+- **已经历强化导入**: 修复 `importCharacters.js` 严格相等过滤器, 改用 `startsWith()` 避免标题文本误捕获为数据
+- **特质效果导入**: 增加 L 列 (col 11) personality effect 读取, 补充原本仅从括号中提取的局限
+- **商店购买库存同步**: 修复 `buyShopItem()` 直接写入 `c.inventory` 但 `renderInventory()` 读取 `_inventory` 的变量不同步问题; 购买/取消后自动同步库存到 UI
+- **商店筛选函数**: 修复 `index.html` 中 `filterShop()` → `refreshShop()` 函数名不匹配 (4 处)
+- **DM 概览增强**: 增加"已经历强化"行显示
+
+### 项目结构整理
+
+- 移除旧文档: `项目逻辑说明.md`, `修改计划.md`, `优化计划_穿越团TRPG终端.md`
+- 移除源数据文件: `穿越团角色卡【合集】1.xlsx`, `无限团兑换列表（雾岛）.xlsx`
+- 移除无用文件: `start.sh`
+- 创建 `docs/` 目录: 移入参考手册和技能文档
+- 创建 `scripts/migration/` 目录: 移入一次性导入脚本
+- `scripts/dataBundle.js` 加入 `.gitignore` (构建产物)
+- 清理 `package.json` 幽灵排除规则
+
+### 数据
+
+- 修复 `李棠王.json` enhances 数组中的标题误捕获数据
+- 重新生成 `dataBundle.js` (19 个数据文件)
+
+---
+
 ## v2.0 (2026-05-31) — 架构重构
 
 ### 数据层
