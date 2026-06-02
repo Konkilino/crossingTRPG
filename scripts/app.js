@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function(){
   initCharSelector();
   initSaveShortcut();
   loadAllData();
+  initUpdater();
 });
 
 function initNavigation(){
@@ -352,4 +353,77 @@ function toggleAllChars(selectAll) {
   document.querySelectorAll('#charSelectList input[type=checkbox]').forEach(function(cb) {
     cb.checked = selectAll;
   });
+}
+
+/* ═══════════════════════════════════════════════════
+   Auto-Updater UI (electron-updater via preload IPC)
+   ═══════════════════════════════════════════════════ */
+
+function initUpdater() {
+  if (!window.electronAPI) return;
+
+  window.electronAPI.getVersion().then(function(ver) {
+    console.log('CrossingTRPG v' + ver);
+    var el = document.querySelector('.main-version');
+    if (el) el.textContent = 'v' + ver + ' · electron';
+  });
+
+  window.electronAPI.onUpdateStatus(function(status, data) {
+    var banner = document.getElementById('updateBanner');
+    var msg = document.getElementById('updateMsg');
+    var actions = document.getElementById('updateActions');
+    if (!banner || !msg || !actions) return;
+
+    banner.style.display = 'block';
+    actions.innerHTML = '';
+
+    switch (status) {
+      case 'checking':
+        msg.textContent = '⏳ 正在检查更新...';
+        break;
+
+      case 'available':
+        msg.textContent = '发现新版本 v' + data.version + '，是否下载？';
+        var dl = document.createElement('button');
+        dl.textContent = '⬇ 下载更新';
+        dl.onclick = function(){ window.electronAPI.startDownload(); };
+        Object.assign(dl.style, {marginLeft:'8px',padding:'2px 10px',fontSize:'11px',cursor:'pointer',
+          background:'rgba(38,198,218,.15)',border:'1px solid var(--accent-cyan)',borderRadius:'4px',color:'var(--accent-cyan)'});
+        actions.appendChild(dl);
+        break;
+
+      case 'not-available':
+        msg.textContent = '✅ 已是最新版本';
+        setTimeout(function(){ banner.style.display = 'none'; }, 3000);
+        break;
+
+      case 'downloaded':
+        msg.textContent = '✅ 更新已下载 (v' + data.version + ')，重启生效';
+        var ri = document.createElement('button');
+        ri.textContent = '🔄 立即重启';
+        ri.onclick = function(){ window.electronAPI.quitAndInstall(); };
+        Object.assign(ri.style, {marginLeft:'8px',padding:'2px 10px',fontSize:'11px',cursor:'pointer',
+          background:'rgba(255,107,107,.15)',border:'1px solid var(--accent-red)',borderRadius:'4px',color:'var(--accent-red)'});
+        actions.appendChild(ri);
+        break;
+
+      case 'error':
+        msg.textContent = '❌ 更新失败: ' + (data && data.message ? data.message : '未知错误');
+        setTimeout(function(){ banner.style.display = 'none'; }, 8000);
+        break;
+    }
+  });
+
+  window.electronAPI.onDownloadProgress(function(progress) {
+    var msg = document.getElementById('updateMsg');
+    if (msg) msg.textContent = '⬇ 下载中... ' + (progress.percent || 0) + '%';
+  });
+}
+
+function checkForUpdates() {
+  if (!window.electronAPI) {
+    alert('更新功能需要 Electron 环境');
+    return;
+  }
+  window.electronAPI.checkForUpdates();
 }

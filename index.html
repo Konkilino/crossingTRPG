@@ -157,6 +157,13 @@
   <button onclick="exportData()">📤 导出</button>
   <button onclick="importData()">📥 导入</button>
   <button id="dmToggle" onclick="toggleDM()">👁 DM</button>
+  <button id="updateBtn" onclick="checkForUpdates()" title="检查更新">🔄 更新</button>
+</div>
+
+<!-- UPDATE STATUS BANNER -->
+<div id="updateBanner" style="display:none;padding:8px 16px;text-align:center;font-size:12px;border-bottom:1px solid var(--border);background:rgba(38,198,218,.08)">
+  <span id="updateMsg"></span>
+  <span id="updateActions" style="margin-left:10px"></span>
 </div>
 
 <!-- MAIN PAGE -->

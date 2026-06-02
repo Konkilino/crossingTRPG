@@ -5,6 +5,39 @@
 
 ---
 
+## v2.2 (2026-06-02) — 自动更新 & NSIS 安装器
+
+### 自动更新 (electron-updater)
+
+- 新增 `electron-updater` v6.x 集成, 以 GitHub Releases 为更新源
+- 新增 `preload.js` — contextBridge 安全的 IPC 桥接, 渲染进程通过 `window.electronAPI` 调用
+- 工具栏新增"🔄 更新"按钮, 点击后自动检查 GitHub 最新 Release
+- 支持静默后台下载, 带进度反馈, 下载完成后提示重启生效
+- 启动时自动检查更新 (3秒延迟, 仅生产构建)
+- `main.js` 从 21 行扩展到 ~110 行, 新增 IPC 处理器 + autoUpdater 事件监听
+
+### NSIS 安装器
+
+- 构建目标从 portable 改为 NSIS, 产出 `CrossingTRPG Setup x.x.x.exe`
+- 安装时可选择安装目录 (`allowToChangeInstallationDirectory`)
+- 安装时可选择是否创建桌面快捷方式 (`createDesktopShortcut`)
+- 自动创建开始菜单快捷方式
+
+### 新增依赖
+
+- `electron-updater ^6.0.1` — GitHub Releases 自动更新
+- `electron-log ^5.3.0` — 结构化日志 (主进程)
+- `preload.js` — IPC bridge (新建, 非 npm 包)
+
+### 项目结构
+
+- 新增 `preload.js` — contextBridge IPC 桥接文件
+- 新增 `dev-app-update.yml` — 本地开发测试配置
+- `package.json` 更新: 版本号 1.0.0 → 2.2.0, 新增 `publish` / `nsis` 配置, `files` 数组增加 `preload.js`
+- `build.files` 新增 `preload.js` 确保打包时包含
+
+---
+
 ## v2.1 (2026-06-02) — Bug 修复与项目整理
 
 ### Bug 修复

@@ -1,6 +1,6 @@
 {
   "name": "crossing-trpg-terminal",
-  "version": "1.0.0",
+  "version": "2.2.0",
   "description": "穿越团 · 主神空间终端",
   "main": "main.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "open": "start index.html",
     "buildBundle": "node scripts/buildDataBundle.js",
     "pack": "electron-packager . CrossingTRPG --platform=win32 --arch=x64 --out=dist --overwrite --ignore=\"node_modules|.claude|.md$\" --electron-version=33.4.11",
-    "dist": "npm run pack && electron-builder --win portable --prepackaged \"dist/CrossingTRPG-win32-x64\""
+    "dist": "npm run buildBundle && npm run pack && electron-builder --win nsis --prepackaged \"dist/CrossingTRPG-win32-x64\""
   },
   "build": {
     "appId": "com.crossing.trpg-terminal",
@@ -20,6 +20,7 @@
     "files": [
       "index.html",
       "main.js",
+      "preload.js",
       "scripts/**/*",
       "styles/**/*",
       "data/**/*",
@@ -28,12 +29,26 @@
       "!.claude/**"
     ],
     "win": {
-      "target": "portable"
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "CrossingTRPG"
+    },
+    "publish": {
+      "provider": "github",
+      "owner": "Konkilino",
+      "repo": "crossingTRPG"
     }
   },
   "devDependencies": {
     "@electron/packager": "^20.0.0",
     "electron": "^33.0.0",
-    "electron-builder": "^25.0.0"
+    "electron-builder": "^25.0.0",
+    "electron-log": "^5.3.0",
+    "electron-updater": "^6.0.1"
   }
 }
