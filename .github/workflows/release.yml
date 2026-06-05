@@ -1,4 +1,4 @@
-name: Build and Release
+﻿name: Build and Release
 
 on:
   push:
@@ -34,52 +34,39 @@ jobs:
       - name: Build data bundle
         run: node scripts/buildDataBundle.js
 
-      - name: Package app (electron-packager)
-        run: npx electron-packager . CrossingTRPG --platform=win32 --arch=x64 --out=dist --overwrite --ignore=".git|.claude|.md$|.github" --electron-version=33.4.11
-
-      - name: Copy app-update.yml to resources
-        run: copy /Y app-update.yml dist\CrossingTRPG-win32-x64\resources\
-
-      - name: Build NSIS installer (electron-builder)
-        run: npx electron-builder --win nsis --prepackaged "dist/CrossingTRPG-win32-x64"
-
-      - name: Rename output files
-        run: |
-          cd dist
-          Get-ChildItem "CrossingTRPG Setup *.exe" | ForEach-Object { Rename-Item $_.FullName -NewName ($_.Name -replace 'CrossingTRPG Setup ', 'CrossingTRPG-Setup-') }
-          Get-ChildItem "CrossingTRPG Setup *.blockmap" | ForEach-Object { Rename-Item $_.FullName -NewName ($_.Name -replace 'CrossingTRPG Setup ', 'CrossingTRPG-Setup-') }
+      - name: Build NSIS installer
+        shell: cmd
+        run: node_modules\.bin\electron-builder.cmd --win nsis
 
       - name: List output
-        run: Get-ChildItem -Path dist -Recurse -File | Select-Object Name, Length
+        shell: cmd
+        run: dir dist /s /b
 
       - name: Create Release and Upload
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ github.ref_name }}
-          name: v${{ github.ref_name }} - 雾岛商店 & 购物车系统
+          name: ${{ github.ref_name }} - 雾岛商店 & 购物车系统
           body: |
             ## 新功能
 
             ### 雾岛世界商店
-            - 新增雾岛（mist_island）世界，含 **83 项商品**
+            - 新增雾岛世界，含 **83 项商品**
             - 武器 11 项 | 道具 56 项 | 防具 6 项 | 强化 10 项
-            - 数据来源：`无限团兑换列表（雾岛）.xlsx` 完整解析
 
             ### 购物车系统
-            - **限定物品**（62项）：限购一次，已有则不可再购
-            - **非限定物品**（21项）：支持增减数量，确认兑换一次性提交
-            - 会话内减少购物车数量 → 100% 返还花费
-            - 切换角色自动清空购物车
+            - **限定物品**：限购一次，已有则不可再购
+            - **非限定物品**：支持增减数量，确认兑换一次性提交
+            - 会话内退款 100%，切换角色自动清空
 
             ### CI/CD
-            - 新增 GitHub Actions 自动发布（推送 tag 触发）
+            - 推送 tag 自动构建发布
 
             ## 安装说明
-            下载 `CrossingTRPG-Setup-*.exe`，双击运行安装。
-            已安装旧版本的用户，打开应用点击工具栏"🔄 更新"按钮即可自动升级。
+            已安装旧版本的用户打开应用点击工具栏 **🔄 更新** 即可自动升级。
           draft: ${{ github.event.inputs.draft || false }}
           files: |
-            dist/CrossingTRPG-Setup-*.exe
-            dist/CrossingTRPG-Setup-*.exe.blockmap
+            dist/*.exe
+            dist/*.blockmap
             dist/latest.yml
           fail_on_unmatched_files: false
