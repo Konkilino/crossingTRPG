@@ -21,6 +21,8 @@
 .main-btn.shop:hover{background:linear-gradient(135deg,rgba(255,138,60,.4),rgba(255,171,145,.3));border-color:#ff8a3c}
 .main-btn.jianxia{background:linear-gradient(135deg,rgba(255,107,107,.2),rgba(255,169,77,.15));border-color:rgba(255,107,107,.4)}
 .main-btn.jianxia:hover{background:linear-gradient(135deg,rgba(255,107,107,.4),rgba(255,169,77,.3));border-color:#ff6b6b}
+.main-btn.mist{background:linear-gradient(135deg,rgba(160,160,255,.2),rgba(180,180,255,.15));border-color:rgba(160,160,255,.4)}
+.main-btn.mist:hover{background:linear-gradient(135deg,rgba(160,160,255,.4),rgba(180,180,255,.3));border-color:#a0a0ff}
 .main-version{position:fixed;bottom:24px;color:#3a3a5a;font-size:11px;font-family:var(--font-mono)}
 .main-grid{position:fixed;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(38,198,218,.03)1px,transparent 1px),linear-gradient(90deg,rgba(38,198,218,.03)1px,transparent 1px);background-size:50px 50px;pointer-events:none;z-index:0}
 .main-content{position:relative;z-index:1}
@@ -181,6 +183,9 @@
       </div>
       <div class="main-btn jianxia" onclick="navigateTo('jianxia')" style="background:linear-gradient(135deg,rgba(255,107,107,.2),rgba(255,169,77,.15));border-color:rgba(255,107,107,.4)">
         <div class="icon">🗡️</div><div class="label">剑侠情缘</div><div class="hint" style="color:#ffab91">JIANXIA WORLD</div>
+      </div>
+      <div class="main-btn mist" onclick="navigateTo('mist_island')" style="background:linear-gradient(135deg,rgba(160,160,255,.2),rgba(180,180,255,.15));border-color:rgba(160,160,255,.4)">
+        <div class="icon">🌫️</div><div class="label">雾岛</div><div class="hint" style="color:#a0a0ff">MIST ISLAND</div>
       </div>
     </div>
     <div class="main-version">
@@ -462,6 +467,50 @@
 </div>
 
   </div>
+<!-- MIST ISLAND PAGE -->
+<div class="page" id="mistIslandPage" style="background:var(--bg-primary)">
+  <div class="shop-content">
+    <div class="shop-header"><h1 style="color:#a0a0ff">🌫️ 雾岛 · 迷雾交易所</h1><p>武器 · 药剂 · 强化 · 兑换</p></div>
+    <div class="shop-search">
+      <span style="font-size:16px">🔍</span>
+      <input id="mistSearch" placeholder="搜索名目、描述…" oninput="filterMistIsland()" style="flex:1;background:var(--bg-primary)">
+      <select id="mistTypeFilter" onchange="filterMistIsland()" style="background:var(--bg-primary)">
+        <option value="">全部类别</option>
+        <option value="武器">武器</option>
+        <option value="道具">道具</option>
+        <option value="防具">防具</option>
+        <option value="强化">强化</option>
+      </select>
+      <select id="mistLimitFilter" onchange="filterMistIsland()" style="background:var(--bg-primary)">
+        <option value="">全部限定</option>
+        <option value="limited">限定</option>
+        <option value="non-limited">非限定</option>
+      </select>
+    </div>
+    <div class="shop-count" id="mistCount"></div>
+    <div id="mistKeywordTags" class="keyword-tag-area" style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:8px"></div>
+    <table class="shop-table">
+      <thead><tr>
+        <th style="width:60px">类别</th>
+        <th style="width:auto">名目</th>
+        <th style="width:35%">描述</th>
+        <th style="width:100px">价格</th>
+        <th style="width:120px">操作</th>
+      </tr></thead>
+      <tbody id="mistBody">
+        <tr><td colspan="5" style="text-align:center;padding:60px;color:var(--text-muted)">数据加载中…</td></tr>
+      </tbody>
+    </table>
+    <div id="mistCartBar" style="display:none;position:sticky;bottom:0;background:var(--bg-card);border:1px solid var(--accent-gold);border-radius:var(--radius);padding:10px 16px;margin-top:12px;align-items:center;gap:12px;z-index:10">
+      <span style="font-size:11px;color:var(--text-muted)">🛒 待兑换</span>
+      <span id="mistCartCount" style="font-size:11px;color:var(--text-secondary)"></span>
+      <span style="flex:1"></span>
+      <span id="mistCartTotal" style="font-size:13px;font-weight:700;color:var(--accent-gold);font-family:var(--font-mono)"></span>
+      <button id="mistCartConfirmBtn" onclick="confirmMistExchange()" style="background:var(--accent-gold);border:none;border-radius:4px;color:#000;cursor:pointer;font-size:12px;font-weight:600;padding:6px 16px">确认兑换</button>
+      <button onclick="clearMistCart()" style="background:transparent;border:1px solid var(--border);border-radius:4px;color:var(--text-muted);cursor:pointer;font-size:11px;padding:6px 12px">清空</button>
+    </div>
+  </div>
+</div>
 <!-- SHOP PAGE -->
 <div class="page" id="shopPage">
   <div class="shop-content">

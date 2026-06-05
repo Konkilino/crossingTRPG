@@ -47,7 +47,8 @@ function navigateTo(page){
   if (page === 'character') { try { if(typeof initCharacterPage==='function') initCharacterPage(); } catch(e){} }
   if (page === 'shop') { try { if(typeof initShopPage==='function') initShopPage(); } catch(e){} }
   if (page === 'dm') { try { if(typeof renderDmOverview==='function') renderDmOverview(); } catch(e){} }
-  if (page === 'jianxia') { try { if(typeof loadJianxiaData==='function') loadJianxiaData(); } catch(e){} }
+  if (page === 'jianxia')   { try { if(typeof loadJianxiaData==='function') loadJianxiaData(); } catch(e){} }
+  if (page === 'mist_island') { try { if(typeof loadMistIslandData==='function') loadMistIslandData(); } catch(e){} }
 }
 
 async function loadAllData(){
